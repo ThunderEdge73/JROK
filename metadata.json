@@ -4,11 +4,11 @@
     "author": [
         "ThunderEdge73"
     ],
-    "description": "A mod that adds a lot of crazy mechanics to Balatro, while attempting to make Endless Mode more interesting.",
+    "description": "A mod containing only Al content.",
     "prefix": "jrok",
     "main_file": "jrok.lua",
     "priority": 0,
-    "badge_colour": "204d7f",
+    "badge_colour": "374244",
     "version": "1.0.0",
     "dependencies": [
         "Steamodded (>=1.0.0~BETA-1503a)"
