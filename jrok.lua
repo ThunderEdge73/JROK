@@ -14,7 +14,7 @@ SMODS.Atlas({
 
 for k, c in pairs(G.P_CENTERS) do
 	if c.set == "Joker" and not c.original_mod then
-		SMODS.Joker:take_ownership(string.sub(k, 3), { atlas = "al_jokers", pixel_size = { w = 71, h = 95 } }, true)
+		SMODS.Joker:take_ownership(string.sub(k, 3), { atlas = "al_jokers" }, true)
 	end
 end
 
