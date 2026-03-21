@@ -176,3 +176,17 @@ payload = '''
 }}
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''card.lua'''
+pattern = '''
+if self.area and self.ability.couponed and (self.area == G.shop_jokers or self.area == G.shop_booster) then self.cost = 0 end
+'''
+position = "after"
+payload = '''
+if JROK.yuri() and (self.config.center_key == "j_blueprint" or self.config.center_key == "j_brainstorm") then
+    self.cost = G.GAME.dollars - G.GAME.bankrupt_at + 1
+end
+'''
+match_indent = true

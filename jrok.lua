@@ -428,13 +428,13 @@ function G.FUNCS.process_jrok_prompt(e)
 	JROK.from_jrok = true
 	if JROK.menu_prompt:find("custom") or JROK.menu_prompt:find("skin") or JROK.menu_prompt:find("collab") then
 		G.FUNCS.customize_deck(e)
-	elseif JROK.menu_prompt:find("deck") then
+	elseif JROK.menu_prompt:find("deck") or JROK.menu_prompt:find("card") then
 		G.FUNCS.deck_info(e)
 	elseif JROK.menu_prompt:find("restart") or JROK.menu_prompt:find("reset") then
 		G.FUNCS.setup_run(e)
 	elseif JROK.menu_prompt:find("seed") and G.GAME.seeded then
 		G.FUNCS.copy_seed(e)
-	elseif JROK.menu_prompt:find("run") then
+	elseif JROK.menu_prompt:find("run") or JROK.menu_prompt:find("planet") or JROK.menu_prompt:find("level") then
 		G.FUNCS.run_info(e)
 	elseif JROK.menu_prompt:find("mod") then
 		G.FUNCS.mods_button(e)
@@ -481,3 +481,257 @@ function G.FUNCS.run_info(e)
 		run_info_hook(e)
 	end
 end
+
+local update_hook = Game.update
+function Game:update(dt)
+	update_hook(self, dt)
+	for _, card in ipairs(G.I.CARD) do
+		if card.ability and card.ability.set == "Joker" then
+			if JROK.yuri() then
+				if card.config.center_key == "j_blueprint" or card.config.center_key == "j_brainstorm" then
+					card:set_cost()
+				end
+			end
+		end
+	end
+end
+
+SMODS.current_mod.calculate = function(self, context)
+	if context.create_shop_card then
+		local item = JROK.generate_joker(true)
+		if item then
+			return {
+				shop_create_flags = {
+					key = item,
+				},
+			}
+		end
+	end
+end
+
+SMODS.Booster:take_ownership_by_kind("Buffoon", {
+	create_card = function()
+		local item = JROK.generate_joker()
+		if item then
+			return {
+				area = G.pack_cards,
+				skip_materialize = true,
+				soulable = true,
+				key_append = "buf",
+				key = item,
+			}
+		end
+		return {
+			set = "Joker",
+			area = G.pack_cards,
+			skip_materialize = true,
+			soulable = true,
+			key_append = "buf",
+		}
+	end,
+}, true)
+
+SMODS.Booster:take_ownership_by_kind("Arcana", {
+	create_card = function()
+		local item = JROK.generate_tarot()
+		if item then
+			return {
+				area = G.pack_cards,
+				skip_materialize = true,
+				soulable = true,
+				key_append = "ar2",
+				key = item,
+			}
+		end
+		local _card
+		if G.GAME.used_vouchers.v_omen_globe and pseudorandom("omen_globe") > 0.8 then
+			_card = {
+				set = "Spectral",
+				area = G.pack_cards,
+				skip_materialize = true,
+				soulable = true,
+				key_append = "ar2",
+			}
+		else
+			_card = {
+				set = "Tarot",
+				area = G.pack_cards,
+				skip_materialize = true,
+				soulable = true,
+				key_append = "ar1",
+			}
+		end
+		return _card
+	end,
+}, true)
+
+SMODS.Booster:take_ownership_by_kind("Spectral", {
+	create_card = function()
+		local item = JROK.generate_spectral()
+		if item then
+			return {
+				area = G.pack_cards,
+				skip_materialize = true,
+				soulable = true,
+				key_append = "ar2",
+				key = item,
+			}
+		end
+		return {
+			set = "Spectral",
+			area = G.pack_cards,
+			skip_materialize = true,
+			soulable = true,
+			key_append = "spe",
+		}
+	end,
+}, true)
+
+function JROK.generate_joker(shop)
+	local pool = {}
+	if JROK.bananas() then
+		pool[#pool + 1] = "j_gros_michel"
+		pool[#pool + 1] = "j_cavendish"
+	end
+	if JROK.cloud_9() then
+		pool[#pool + 1] = "cloud_9"
+	end
+	if JROK.yuri() then
+		if shop then
+			pool[#pool + 1] = "j_brainstorm"
+			pool[#pool + 1] = "j_blueprint"
+		else
+			pool[#pool + 1] = "j_credit_card"
+		end
+	end
+	if next(pool) then
+		return pseudorandom_element(pool, "jrok_prompt")
+	end
+end
+
+function JROK.generate_tarot()
+	local pool = {}
+	if JROK.legendary() then
+		pool[#pool + 1] = "c_soul"
+	end
+	if next(pool) then
+		return pseudorandom_element(pool, "jrok_prompt")
+	end
+end
+
+function JROK.generate_planet()
+	local pool = {}
+	-- TODO
+	if next(pool) then
+		return pseudorandom_element(pool, "jrok_prompt")
+	end
+end
+
+function JROK.generate_spectral()
+	local pool = {}
+	if JROK.legendary() then
+		pool[#pool + 1] = "c_soul"
+	end
+	if next(pool) then
+		return pseudorandom_element(pool, "jrok_prompt")
+	end
+end
+
+function JROK.bananas()
+	return G.GAME.jrok_prompt:find("banana")
+		or G.GAME.jrok_prompt:find("gros")
+		or G.GAME.jrok_prompt:find("cave")
+		or G.GAME.jrok_prompt:find("potassium")
+end
+
+function JROK.cloud_9()
+	return G.GAME.jrok_prompt:find("cloud") or G.GAME.jrok_prompt:find("9")
+end
+
+function JROK.legendary()
+	return G.GAME.jrok_prompt:find("legendary") or G.GAME.jrok_prompt:find("soul")
+end
+
+function JROK.yuri()
+	return G.GAME.jrok_prompt and (G.GAME.jrok_prompt:find("blueprint") or G.GAME.jrok_prompt:find("brainstorm"))
+end
+
+SMODS.Joker:take_ownership("gros_michel", {
+	calculate = function(self, card, context)
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			if
+				JROK.bananas()
+				or G.GAME.jrok_prompt:find("banana")
+				or SMODS.pseudorandom_probability(card, "gros_michel", 1, card.ability.extra.odds)
+			then
+				SMODS.destroy_cards(card, nil, nil, true)
+				G.GAME.pool_flags.gros_michel_extinct = true
+				return {
+					message = localize("k_extinct_ex"),
+				}
+			else
+				return {
+					message = localize("k_safe_ex"),
+				}
+			end
+		end
+		if context.joker_main then
+			return {
+				mult = card.ability.extra.mult,
+			}
+		end
+	end,
+}, true)
+
+SMODS.Joker:take_ownership("cavendish", {
+	calculate = function(self, card, context)
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			if JROK.bananas() or SMODS.pseudorandom_probability(card, "cavendish", 1, card.ability.extra.odds) then
+				SMODS.destroy_cards(card, nil, nil, true)
+				return {
+					message = localize("k_extinct_ex"),
+				}
+			else
+				return {
+					message = localize("k_safe_ex"),
+				}
+			end
+		end
+		if context.joker_main then
+			return {
+				xmult = card.ability.extra.Xmult,
+			}
+		end
+	end,
+}, true)
+
+SMODS.Consumable:take_ownership("soul", {
+	use = function(self, card, area, copier)
+		if JROK.legendary() then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.4,
+				func = function()
+					play_sound("timpani")
+					SMODS.add_card({ set = "Joker" })
+					card:juice_up(0.3, 0.5)
+					return true
+				end,
+			}))
+			delay(0.6)
+		else
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.4,
+				func = function()
+					play_sound("timpani")
+					SMODS.add_card({ set = "Joker", legendary = true })
+					check_for_unlock({ type = "spawn_legendary" })
+					card:juice_up(0.3, 0.5)
+					return true
+				end,
+			}))
+			delay(0.6)
+		end
+	end,
+}, true)
