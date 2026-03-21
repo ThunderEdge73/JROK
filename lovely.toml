@@ -113,3 +113,66 @@ if hook.config.ref_table.extended_corpus then
 end
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''cardarea.lua'''
+pattern = '''
+{n=G.UIT.R, config={align = "cm", maxw = 2}, nodes={
+    {n=G.UIT.T, config={text = localize('k_deck'), scale = 0.38, colour = G.C.WHITE, shadow = true}}
+}},
+'''
+position = "after"
+payload = '''
+{n=G.UIT.R, config={align = "cm", maxw = 2}, nodes={
+    {n=G.UIT.T, config={text = localize('k_jrok_powered'), scale = 0.38, colour = G.C.WHITE, shadow = true}}
+}},
+{n=G.UIT.R, config={align = "cm", maxw = 2}, nodes={
+    {n=G.UIT.T, config={text = localize('k_by_jrok'), scale = 0.38, colour = G.C.WHITE, shadow = true}}
+}},
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/UI_definitions.lua'''
+pattern = '''
+{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
+    {n=G.UIT.T, config={text = localize('b_run_info_2'), scale = 1*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true, focus_args = {button = G.F_GUIDE and 'guide' or 'back', orientation = 'bm'}, func = 'set_button_pip'}}
+}}
+'''
+position = "at"
+payload = '''
+{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
+    {n=G.UIT.T, config={text = localize('b_run_info_2'), scale = 1*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true, focus_args = {button = G.F_GUIDE and 'guide' or 'back', orientation = 'bm'}, func = 'set_button_pip'}}
+}},
+{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
+    {n=G.UIT.T, config={text = localize('k_jrok_powered'), scale = 0.75*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true, focus_args = {button = G.F_GUIDE and 'guide' or 'back', orientation = 'bm'}, func = 'set_button_pip'}}
+}},
+{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
+    {n=G.UIT.T, config={text = localize('k_by_jrok'), scale = 0.75*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true, focus_args = {button = G.F_GUIDE and 'guide' or 'back', orientation = 'bm'}, func = 'set_button_pip'}}
+}}
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/UI_definitions.lua'''
+pattern = '''
+{n=G.UIT.C, config={align = "cm", maxw = 1.4, focus_args = {button = 'start', orientation = 'bm'}, func = 'set_button_pip'}, nodes={
+    {n=G.UIT.T, config={text = localize('b_options'), scale = scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+}},
+'''
+position = "at"
+payload = '''
+{n=G.UIT.R, config={align = "cm", maxw = 1.4, focus_args = {button = 'start', orientation = 'bm'}, func = 'set_button_pip'}, nodes={
+    {n=G.UIT.T, config={text = localize('b_options'), scale = scale, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+}},
+{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
+    {n=G.UIT.T, config={text = localize('k_jrok_powered'), scale = 0.75*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true, focus_args = {button = G.F_GUIDE and 'guide' or 'back', orientation = 'bm'}, func = 'set_button_pip'}}
+}},
+{n=G.UIT.R, config={align = "cm", padding = 0, maxw = 1.4}, nodes={
+    {n=G.UIT.T, config={text = localize('k_by_jrok'), scale = 0.75*scale, colour = G.C.UI.TEXT_LIGHT, shadow = true, focus_args = {button = G.F_GUIDE and 'guide' or 'back', orientation = 'bm'}, func = 'set_button_pip'}}
+}}
+'''
+match_indent = true
