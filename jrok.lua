@@ -410,7 +410,7 @@ function G.FUNCS.jrok_menu_prompt(e)
 		func = function()
 			G.OVERLAY_MENU:recalculate()
 			return true
-		end
+		end,
 	}))
 end
 
@@ -438,11 +438,16 @@ function G.FUNCS.process_jrok_prompt(e)
 		G.FUNCS.run_info(e)
 	elseif JROK.menu_prompt:find("mod") then
 		G.FUNCS.mods_button(e)
-	elseif JROK.menu_prompt:find("menu") or JROK.menu_prompt:find("quit") then
+	elseif
+		JROK.menu_prompt:find("main")
+		or JROK.menu_prompt:find("title")
+		or JROK.menu_prompt:find("quit")
+		or JROK.menu_prompt:find("exit")
+	then
 		G.FUNCS.go_to_menu(e)
 	elseif JROK.menu_prompt:find("collection") then
 		G.FUNCS.your_collection(e)
-	elseif JROK.menu_prompt:find("setting") then
+	elseif JROK.menu_prompt:find("setting") or JROK.menu_prompt:find("option") then
 		G.FUNCS.settings(e)
 	elseif JROK.menu_prompt:find("score") then
 		G.FUNCS.high_scores(e)
