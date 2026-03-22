@@ -616,27 +616,27 @@ function JROK.generate_joker(shop)
 		pool[#pool + 1] = "j_mime"
 		pool[#pool + 1] = "j_baron"
 	end
+	if JROK.wheel() then
+		pool[#pool+1] = "j_bloodstone"
+		pool[#pool+1] = "j_space"
+		pool[#pool+1] = "j_hallucination"
+		pool[#pool+1] = "j_business"
+		pool[#pool+1] = "j_8_ball"
+	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
 	end
-end
-
-local get_new_boss_hook = get_new_boss
-function get_new_boss()
-	local ret = get_new_boss_hook()
-	if JROK.photochad() then
-		ret = "bl_plant"
-	end
-	if JROK.naneinf() and (G.GAME.round_resets.ante % G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) then
-		ret = "bl_final_vessel"
-	end
-	return ret
 end
 
 function JROK.generate_tarot()
 	local pool = {}
 	if JROK.legendary() then
 		pool[#pool + 1] = "c_soul"
+	end
+	if JROK.wheel() then
+		pool[#pool+1] = "c_justice"
+		pool[#pool+1] = "c_magician"
+		pool[#pool+1] = "c_wheel_of_fortune"
 	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
@@ -661,10 +661,36 @@ function JROK.generate_spectral()
 	end
 end
 
+function JROK.generate_blind()
+	local pool = {}
+	if JROK.photochad() then
+		pool[#pool + 1] = "bl_plant"
+	end
+	if JROK.naneinf() and (G.GAME.round_resets.ante % G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) then
+		pool[#pool + 1] = "bl_final_vessel"
+	end
+	if JROK.wheel() then
+		pool[#pool + 1] = "bl_wheel"
+	end
+	if next(pool) then
+		return pseudorandom_element(pool, "jrok_prompt")
+	end
+end
+
+local get_new_boss_hook = get_new_boss
+function get_new_boss()
+	local ret = get_new_boss_hook()
+	local generated = JROK.generate_blind()
+	if generated then
+		ret = generated
+	end
+	return ret
+end
+
 function JROK.bananas()
 	return G.GAME.jrok_prompt:find("banana")
 		or G.GAME.jrok_prompt:find("gros")
-		or G.GAME.jrok_prompt:find("cave")
+		or G.GAME.jrok_prompt:find("cavendish")
 		or G.GAME.jrok_prompt:find("potassium")
 end
 
@@ -691,6 +717,28 @@ end
 
 function JROK.naneinf()
 	return G.GAME.jrok_prompt:find("baron") or G.GAME.jrok_prompt:find("mime") or G.GAME.jrok_prompt:find("inf")
+end
+
+function JROK.wheel()
+	for _, str in ipairs({
+		"space",
+		"glass",
+		"wheel",
+		"fortune",
+		"luck",
+		"cat",
+		"oops",
+		"blood",
+		"park",
+		"hallucin",
+		"business",
+		"ball"
+	}) do
+		if G.GAME.jrok_prompt:find(str) then
+			return true
+		end
+	end
+	return false
 end
 
 SMODS.Joker:take_ownership("gros_michel", {
