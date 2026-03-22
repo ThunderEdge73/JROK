@@ -46,7 +46,7 @@ JROK.menu_prompt = ""
 local start_run_hook = Game.start_run
 function Game:start_run(args)
 	start_run_hook(self, args)
-	G.GAME.jrok_prompt = G.GAME.jrok_prompt or JROK.prompt_text
+	G.GAME.jrok_prompt = G.GAME.jrok_prompt or JROK.prompt_text or args.prompt
 end
 
 function G.FUNCS.jrok_start_run_prompt(e)
@@ -487,7 +487,7 @@ function Game:update(dt)
 	update_hook(self, dt)
 	for _, card in ipairs(G.I.CARD) do
 		if card.ability and card.ability.set == "Joker" then
-			if JROK.yuri() then
+			if G.GAME.jrok_prompt and JROK.yuri() then
 				if card.config.center_key == "j_blueprint" or card.config.center_key == "j_brainstorm" then
 					card:set_cost()
 				end
@@ -653,7 +653,7 @@ function JROK.legendary()
 end
 
 function JROK.yuri()
-	return G.GAME.jrok_prompt and (G.GAME.jrok_prompt:find("blueprint") or G.GAME.jrok_prompt:find("brainstorm"))
+	return G.GAME.jrok_prompt:find("blueprint") or G.GAME.jrok_prompt:find("brainstorm") or G.GAME.jrok_prompt:find("yuri")
 end
 
 SMODS.Joker:take_ownership("gros_michel", {

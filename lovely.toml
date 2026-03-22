@@ -185,8 +185,45 @@ if self.area and self.ability.couponed and (self.area == G.shop_jokers or self.a
 '''
 position = "after"
 payload = '''
-if JROK.yuri() and (self.config.center_key == "j_blueprint" or self.config.center_key == "j_brainstorm") then
+if G.GAME.jrok_prompt and JROK.yuri() and (self.config.center_key == "j_blueprint" or self.config.center_key == "j_brainstorm") then
     self.cost = G.GAME.dollars - G.GAME.bankrupt_at + 1
 end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''engine/controller.lua'''
+pattern = '''
+if G.STAGE == G.STAGES.RUN then G.FUNCS.start_setup_run() end
+'''
+position = "before"
+payload = '''
+G.forced_prompt = G.GAME.jrok_prompt
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''engine/controller.lua'''
+pattern = '''
+if G.STAGE == G.STAGES.RUN then G.FUNCS.start_setup_run() end
+'''
+position = "after"
+payload = '''
+G.forced_prompt = nil
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''functions/button_callbacks.lua'''
+pattern = '''
+G.FUNCS.start_run(e, {stake = _stake, seed = _seed, challenge = _challenge})
+'''
+position = "at"
+payload = '''
+local _prompt = G.forced_prompt or nil
+G.FUNCS.start_run(e, {stake = _stake, seed = _seed, challenge = _challenge, prompt = _prompt})
 '''
 match_indent = true
