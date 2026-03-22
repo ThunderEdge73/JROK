@@ -508,7 +508,7 @@ SMODS.current_mod.calculate = function(self, context)
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				SMODS.juice_up_blind()
 				return true
-			end
+			end,
 		}))
 	end
 end
@@ -683,7 +683,10 @@ function JROK.yuri()
 end
 
 function JROK.photochad()
-	return G.GAME.jrok_prompt:find("photo") or G.GAME.jrok_prompt:find("chad") or G.GAME.jrok_prompt:find("yaoi")
+	return G.GAME.jrok_prompt:find("photo")
+		or G.GAME.jrok_prompt:find("chad")
+		or G.GAME.jrok_prompt:find("yaoi")
+		or G.GAME.jrok_prompt:find("chud")
 end
 
 function JROK.naneinf()
