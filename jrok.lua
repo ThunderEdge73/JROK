@@ -731,7 +731,8 @@ function JROK.wheel()
 		"park",
 		"hallucin",
 		"business",
-		"ball"
+		"ball",
+		"chance"
 	}) do
 		if G.GAME.jrok_prompt:find(str) then
 			return true
