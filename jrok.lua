@@ -726,7 +726,6 @@ function JROK.wheel()
 		"wheel",
 		"fortune",
 		"luck",
-		"cat",
 		"oops",
 		"blood",
 		"park",
