@@ -43,12 +43,6 @@ JROK = {}
 JROK.prompt_text = ""
 JROK.menu_prompt = ""
 
-local start_run_hook = Game.start_run
-function Game:start_run(args)
-	start_run_hook(self, args)
-	G.GAME.jrok_prompt = G.GAME.jrok_prompt or JROK.prompt_text or args.prompt
-end
-
 function G.FUNCS.jrok_start_run_prompt(e)
 	JROK.prompt_text = ""
 	G.SETTINGS.paused = true
@@ -507,6 +501,16 @@ SMODS.current_mod.calculate = function(self, context)
 			}
 		end
 	end
+	if context.setting_blind and JROK.naneinf() and context.blind.key == "bl_final_vessel" then
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				G.GAME.blind.chips = 1e308 * 10
+				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+				SMODS.juice_up_blind()
+				return true
+			end
+		}))
+	end
 end
 
 SMODS.Booster:take_ownership_by_kind("Buffoon", {
@@ -604,9 +608,29 @@ function JROK.generate_joker(shop)
 			pool[#pool + 1] = "j_credit_card"
 		end
 	end
+	if JROK.photochad() then
+		pool[#pool + 1] = "j_photograph"
+		pool[#pool + 1] = "j_hanging_chad"
+	end
+	if JROK.naneinf() then
+		pool[#pool + 1] = "j_mime"
+		pool[#pool + 1] = "j_baron"
+	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
 	end
+end
+
+local get_new_boss_hook = get_new_boss
+function get_new_boss()
+	local ret = get_new_boss_hook()
+	if JROK.photochad() then
+		ret = "bl_plant"
+	end
+	if JROK.naneinf() and (G.GAME.round_resets.ante % G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) then
+		ret = "bl_final_vessel"
+	end
+	return ret
 end
 
 function JROK.generate_tarot()
@@ -653,7 +677,17 @@ function JROK.legendary()
 end
 
 function JROK.yuri()
-	return G.GAME.jrok_prompt:find("blueprint") or G.GAME.jrok_prompt:find("brainstorm") or G.GAME.jrok_prompt:find("yuri")
+	return G.GAME.jrok_prompt:find("blueprint")
+		or G.GAME.jrok_prompt:find("brainstorm")
+		or G.GAME.jrok_prompt:find("yuri")
+end
+
+function JROK.photochad()
+	return G.GAME.jrok_prompt:find("photo") or G.GAME.jrok_prompt:find("chad") or G.GAME.jrok_prompt:find("yaoi")
+end
+
+function JROK.naneinf()
+	return G.GAME.jrok_prompt:find("baron") or G.GAME.jrok_prompt:find("mime") or G.GAME.jrok_prompt:find("inf")
 end
 
 SMODS.Joker:take_ownership("gros_michel", {

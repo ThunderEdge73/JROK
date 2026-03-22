@@ -227,3 +227,15 @@ local _prompt = G.forced_prompt or nil
 G.FUNCS.start_run(e, {stake = _stake, seed = _seed, challenge = _challenge, prompt = _prompt})
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''game.lua'''
+pattern = '''
+self.GAME = saveTable and saveTable.GAME or self:init_game_object()
+'''
+position = "after"
+payload = '''
+G.GAME.jrok_prompt = G.GAME.jrok_prompt or JROK.prompt_text or args.prompt
+'''
+match_indent = true
