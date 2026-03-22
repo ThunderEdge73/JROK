@@ -634,8 +634,6 @@ function JROK.generate_tarot()
 		pool[#pool + 1] = "c_soul"
 	end
 	if JROK.wheel() then
-		pool[#pool+1] = "c_justice"
-		pool[#pool+1] = "c_magician"
 		pool[#pool+1] = "c_wheel_of_fortune"
 	end
 	if next(pool) then
