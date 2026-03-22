@@ -504,7 +504,7 @@ SMODS.current_mod.calculate = function(self, context)
 	if context.setting_blind and JROK.naneinf() and context.blind.key == "bl_final_vessel" then
 		G.E_MANAGER:add_event(Event({
 			func = function()
-				G.GAME.blind.chips = 1e308 * 10
+				G.GAME.blind.chips = 1e210 * 1e210
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				SMODS.juice_up_blind()
 				return true
