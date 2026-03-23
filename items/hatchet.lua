@@ -53,7 +53,7 @@ SMODS.Joker({
 	eternal_compat = true,
 	perishable_compat = true,
 	unlocked = true,
-	atlas = "CustomJokers",
+	atlas = "stolen",
 	calculate = function(self, card, context)
 		if context.joker_main and next(context.poker_hands["Flush"]) then
 			for i = 1, #context.full_hand do
