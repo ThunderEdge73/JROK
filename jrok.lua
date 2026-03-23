@@ -738,6 +738,10 @@ function JROK.lucky()
 	return false
 end
 
+function JROK.theft()
+	return G.GAME.jrok_prompt:find("vanilla") or G.GAME.jrok_prompt:find("mod") or G.GAME.jrok_prompt:find("content")
+end
+
 SMODS.Joker:take_ownership("gros_michel", {
 	calculate = function(self, card, context)
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
