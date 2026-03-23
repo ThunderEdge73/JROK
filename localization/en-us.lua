@@ -36,7 +36,7 @@ return {
 				name = "Jetfish",
 				text = {
 					"{C:mult}+#1#{} Mult for each",
-					"consecutive hand",
+					"{C:attention}consecutive{} hand",
 					"played without",
 					"unscoring cards",
 					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
