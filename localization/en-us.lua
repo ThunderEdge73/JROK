@@ -1,22 +1,20 @@
 return {
 	descriptions = {
 		Joker = {
-			j_tboj_monstro_lung = {
-				name = "Monstro's Lung",
+			j_jrok_holy_water = {
+				name = "Holy Water",
 				text = {
-					"Randomly add {C:attention}#1#{} to {C:attention}#2#{}",
-					"cards to your {C:attention}played hand",
-					"before determining the {C:attention}poker hand{},",
-					"then {C:attention}destroy{} them after scoring",
+					"Each card {C:attention}held in hand{}",
+					"permanently gains {C:chips}+#1#{} Chips",
+					"when hand is played",
 				},
 			},
-			j_jrok_dream_catcher = {
-				name = "Dream Catcher",
+			j_tboj_the_halo = {
+				name = "The Halo",
 				text = {
-					"The next {C:attention}Boss Blind{}",
-					"is {C:attention}#1#",
-					"{s:0.8}Prediction might change",
-					"{s:0.8}based on your actions",
+					"{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult",
+					"Earn {C:money}$#3#{} at",
+					"end of round",
 				},
 			},
 		},
