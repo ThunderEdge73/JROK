@@ -1,3 +1,5 @@
+-- Willow
+
 SMODS.Joker({
 	key = "jetfish",
 	rarity = 2,

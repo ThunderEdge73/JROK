@@ -1,3 +1,5 @@
+-- Astra
+
 SMODS.Joker({
 	key = "normal",
 	atlas = "stolen",

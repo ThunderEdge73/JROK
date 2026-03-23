@@ -1,3 +1,5 @@
+-- Maelmc
+
 SMODS.Joker({
 	key = "spoon_bender",
 	pos = { x = 0, y = 0 },
@@ -47,7 +49,7 @@ SMODS.Joker({
 	end,
 	rarity = 1,
 	cost = 4,
-	atlas = "jokers",
+	atlas = "stolen",
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = false,

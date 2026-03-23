@@ -1,3 +1,5 @@
+-- frangnosquest, missingnumber
+
 SMODS.Joker({
 	key = "dazzles",
 	pos = { x = 4, y = 1 },

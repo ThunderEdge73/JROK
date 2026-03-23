@@ -1,3 +1,5 @@
+-- notmario
+
 SMODS.Joker({
 	key = "philosophical",
 	config = {

@@ -11,8 +11,10 @@ return {
 			j_jrok_dream_catcher = {
 				name = "Dream Catcher",
 				text = {
-					"The next {C:attention}Boss Blind{} is {C:attention}#1#",
-					"{s:0.8}Prediction might change based on your actions",
+					"The next {C:attention}Boss Blind{}",
+					"is {C:attention}#1#",
+					"{s:0.8}Prediction might change",
+					"{s:0.8}based on your actions",
 				},
 			},
 			j_jrok_normal = {
@@ -134,10 +136,19 @@ return {
 			j_jrok_tony = {
 				name = "Tony",
 				text = {
-					"Create a {C:dark_edition}Negative {C:spectral}Spectral{} Card",
-					"if played hand contains",
-					"a card with the {C:attention}Foil{}",
-					"edition and an {C:attention}Ace{}",
+					"Create a {C:dark_edition}Negative {C:spectral}Spectral{}",
+					"card if played hand",
+					"contains a card with",
+					"{C:attention}Foil{} and an {C:attention}Ace{}",
+				},
+			},
+			j_jrok_punch_card = {
+				name = "Punch Card",
+				text = {
+					"Duplicates next used",
+					"consumable every {C:attention}#1#",
+					"consumables used",
+					"{C:inactive}(#2#){}",
 				},
 			},
 		},
@@ -163,6 +174,11 @@ return {
 			k_berry_ex = "Berry!",
 			jrok_unknown = "[Unknown]",
 			jrok_acquire_to_reveal = "[Acquire to reveal]",
+			k_jrok_punch_duplicate = "Consumable printed",
+		},
+		v_dictionary = {
+			jrok_punch_card_more = "#1# more required...",
+			jrok_punch_card_will = "Next consumable will be duplicated!",
 		},
 	},
 }

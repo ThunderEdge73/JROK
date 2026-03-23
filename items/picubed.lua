@@ -1,3 +1,5 @@
+-- pi_cubed
+
 SMODS.Joker({
 	key = "forgery",
 	rarity = 2,

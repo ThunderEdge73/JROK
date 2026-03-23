@@ -1,3 +1,5 @@
+-- PlasmaPhrase
+
 SMODS.Joker({
 	key = "hatchet",
 	config = {

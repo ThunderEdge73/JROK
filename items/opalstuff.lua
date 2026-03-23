@@ -1,3 +1,5 @@
+-- Opal
+
 SMODS.Joker({
 	key = "shiny_rock",
 	config = { extra = { odds = 20 } },
