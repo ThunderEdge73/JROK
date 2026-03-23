@@ -16,6 +16,14 @@ return {
 					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
 				},
 			},
+			j_jrok_normal = {
+				name = "Normal Joker",
+				text = {
+					"Played cards without an",
+					"{C:attention}Enhancement{}, {C:attention}Edition{}, or {C:attention}Seal",
+					"give {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
+				},
+			},
 		},
 	},
 	misc = {

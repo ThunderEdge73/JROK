@@ -1,0 +1,41 @@
+SMODS.Joker({
+	key = "normal",
+	atlas = "stolen",
+	pos = {
+		x = 2,
+		y = 0,
+	},
+	config = {
+		extra = {
+			mult = 2,
+			chips = 15,
+		},
+	},
+	discovered = true,
+	rarity = 1,
+	blueprint_compat = true,
+	cost = 3,
+	loc_vars = function(self, info_queue, card)
+		local stg = card.ability.extra
+		return { vars = { stg.mult, stg.chips } }
+	end,
+	calculate = function(self, card, context)
+		local stg = card.ability.extra
+		if context.individual and context.cardarea == G.play then
+			if
+				not context.other_card.edition
+				and not context.other_card.seal
+				and not next(SMODS.get_enhancements(context.other_card))
+			then
+				return {
+					mult = stg.mult,
+					chips = stg.chips,
+					card = card,
+				}
+			end
+		end
+	end,
+	in_pool = function(self, args)
+		return false
+	end,
+})
