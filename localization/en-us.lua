@@ -115,7 +115,7 @@ return {
 					"{C:inactive}(Who's Paul?)",
 				},
 			},
-			j_zero_dazzles = {
+			j_jrok_dazzles = {
 				name = "The Dazzles",
 				text = {
 					"{C:mult}+#1#{} Mult after {C:attention}#2#{} card#3#",
