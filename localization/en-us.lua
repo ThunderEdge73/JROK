@@ -115,6 +115,23 @@ return {
 					"{C:inactive}(Who's Paul?)",
 				},
 			},
+			j_zero_dazzles = {
+				name = "The Dazzles",
+				text = {
+					"{C:mult}+#1#{} Mult after {C:attention}#2#{} card#3#",
+					"scored, then change to a random",
+					"requirement between {C:attention}1{}, {C:attention}2{}, {C:attention}3{} and {C:attention}6{}",
+				},
+			},
+			j_jrok_croque_madame = {
+				name = "Croque Madame",
+				text = {
+					"If a Joker is on the right of",
+					"this at end of round, consume",
+					"this and gain {C:money}${} equal to {C:attention}double",
+					"the {C:attention}sell value{} of both",
+				},
+			},
 		},
 	},
 	misc = {
