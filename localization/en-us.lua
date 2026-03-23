@@ -132,6 +132,15 @@ return {
 					"the {C:attention}sell value{} of both",
 				},
 			},
+			j_jrok_tony = {
+				name = "Tony",
+				text = {
+					"Create a {C:dark_edition}Negative {C:spectral}Spectral{} Card",
+					"if played hand contains",
+					"a card with the {C:attention}Foil{}",
+					"edition and an {C:attention}Ace{}",
+				},
+			},
 		},
 	},
 	misc = {
@@ -152,6 +161,7 @@ return {
 			k_jrok_powered = "(Powered",
 			k_by_jrok = "by JROK)",
 			k_felled_ex = "Felled!",
+			k_berry_ex = "Berry!",
 		},
 	},
 }

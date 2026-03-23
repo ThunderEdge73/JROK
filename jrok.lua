@@ -824,7 +824,7 @@ SMODS.Consumable:take_ownership("soul", {
 
 SMODS.Atlas({
 	key = "stolen",
-	path = "stolen_spritesheet.png",
+	path = "stolen.png",
 	px = 71,
 	py = 95,
 })
@@ -857,3 +857,5 @@ function JROK.recursive_load(path)
 		end
 	end
 end
+
+JROK.recursive_load("items")
