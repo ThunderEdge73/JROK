@@ -24,6 +24,34 @@ return {
 					"give {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
 				},
 			},
+			j_jrok_4d = {
+				name = "4D Joker",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"Decreases by {X:mult,C:white}X#2#{}",
+					"{C:attention}every second",
+				},
+			},
+			j_jrok_jetfish = {
+				name = "Jetfish",
+				text = {
+					"{C:mult}+#1#{} Mult for each",
+					"consecutive hand",
+					"played without",
+					"unscoring cards",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+				},
+			},
+			j_jrok_cobbler = {
+				name = "Cobbler",
+				text = {
+					"Gains {C:mult}+#1#{} Mult at",
+					"end of round",
+					"This Joker {C:red}self-destructs",
+					"after reaching {C:mult}+#3#{} Mult",
+					"{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
+				},
+			},
 		},
 	},
 	misc = {

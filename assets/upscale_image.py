@@ -22,5 +22,3 @@ if __name__ == "__main__":
         print("Something went wrong when getting the original image.")
     except FileExistsError:
         print("Upscaled image already exists.")
-
-    

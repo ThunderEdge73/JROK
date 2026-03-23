@@ -829,6 +829,23 @@ SMODS.Atlas({
 	py = 95,
 })
 
+SMODS.Atlas({
+	key = "stolen_4d",
+	path = "4d.png",
+	px = 71,
+	py = 95,
+	atlas_table = "ANIMATION_ATLAS",
+	frames = 71,
+	fps = 20,
+})
+
+SMODS.Atlas({
+	key = "stolen_4d_soul",
+	path = "4d.png",
+	px = 71,
+	py = 95,
+})
+
 function JROK.recursive_load(path)
 	local files = SMODS.NFS.getDirectoryItems(SMODS.current_mod.path .. path)
 	for _, item in ipairs(files) do
