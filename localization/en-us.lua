@@ -101,6 +101,20 @@ return {
 					"card into a {C:attention}random suit",
 				},
 			},
+			j_jrok_philosophical = {
+				name = "Philosophical Joker",
+				text = {
+					"{C:dark_edition}+#1#{} Joker Slot",
+				},
+			},
+			j_jrok_basepaul = {
+				name = "Basepaul Card",
+				text = {
+					"{X:mult,C:white} X#1# {} Mult. {X:mult,C:white} X#2# {} Mult",
+					"instead for {C:red}Paul{}",
+					"{C:inactive}(Who's Paul?)",
+				},
+			},
 		},
 	},
 	misc = {
