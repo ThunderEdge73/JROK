@@ -1,26 +1,23 @@
 SMODS.Joker({
-	key = "the_halo",
+	key = "spoon_bender",
 	pos = { x = 0, y = 0 },
-	config = { extra = { chips = 20, mult = 3, money = 1 } },
+	config = { extra = { Xmult_multi = 2 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.money } }
+		return { vars = { card.ability.extra.Xmult_multi } }
 	end,
-	rarity = 1,
-	cost = 5,
+	rarity = 3,
+	cost = 8,
 	atlas = "jokers",
 	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
 	calculate = function(self, card, context)
-		if context.joker_main then
+		if context.cardarea == "unscored" and context.individual then
 			return {
-				chips = card.ability.extra.chips,
-				mult = card.ability.extra.mult,
+				colour = G.C.MULT,
+				Xmult = card.ability.extra.Xmult_multi,
 			}
 		end
-	end,
-	calc_dollar_bonus = function(self, card)
-		return card.ability.extra.money
 	end,
 	in_pool = function(self, args)
 		return false
@@ -28,25 +25,29 @@ SMODS.Joker({
 })
 
 SMODS.Joker({
-	key = "holy_water",
+	key = "charm_of_the_vampire",
 	pos = { x = 1, y = 0 },
-	config = { extra = { chips = 4 } },
+	config = { extra = { mult = 0, mult_mod = 3 } },
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.chips } }
+		return { vars = { card.ability.extra.mult_mod, card.ability.extra.mult } }
 	end,
-	rarity = 2,
+	rarity = 1,
 	cost = 5,
 	atlas = "jokers",
-	perishable_compat = true,
+	perishable_compat = false,
 	eternal_compat = true,
 	blueprint_compat = true,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.hand and not context.end_of_round then
-			context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0)
-				+ card.ability.extra.chips
+		if context.joker_main then
 			return {
-				message = localize("k_upgrade_ex"),
+				mult = card.ability.extra.mult,
 			}
+		end
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			SMODS.scale_card(card, {
+				ref_value = "mult",
+				scalar_value = "mult_mod",
+			})
 		end
 	end,
 	in_pool = function(self, args)

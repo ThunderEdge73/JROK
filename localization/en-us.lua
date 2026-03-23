@@ -1,20 +1,19 @@
 return {
 	descriptions = {
 		Joker = {
-			j_jrok_holy_water = {
-				name = "Holy Water",
+			j_jrok_spoon_bender = {
+				name = "Spoon Bender",
 				text = {
-					"Each card {C:attention}held in hand{}",
-					"permanently gains {C:chips}+#1#{} Chips",
-					"when hand is played",
+					"{C:attention}Unscored cards{}",
+					"give {C:white,X:mult}X#1#{} Mult",
 				},
 			},
-			j_tboj_the_halo = {
-				name = "The Halo",
+			j_jrok_charm_of_the_vampire = {
+				name = "Charm of the Vampire",
 				text = {
-					"{C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult",
-					"Earn {C:money}$#3#{} at",
-					"end of round",
+					"This Joker gains {C:mult}+#1#{} Mult",
+					"when {C:attention}Blind{} is defeated",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
 				},
 			},
 		},
