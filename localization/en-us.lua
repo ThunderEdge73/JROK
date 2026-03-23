@@ -161,6 +161,8 @@ return {
 			k_by_jrok = "by JROK)",
 			k_felled_ex = "Felled!",
 			k_berry_ex = "Berry!",
+			jrok_unknown = "[Unknown]",
+			jrok_acquire_to_reveal = "[Acquire to reveal]",
 		},
 	},
 }
