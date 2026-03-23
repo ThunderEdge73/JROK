@@ -85,6 +85,22 @@ return {
 					"{C:inactive}(Currently {C:attention}#1#{} {C:inactive}retriggers)",
 				},
 			},
+			j_jrok_hatchet = {
+				name = "Hatchet",
+				text = {
+					"{X:red,C:white}X#1#{} Mult on {C:attention}first",
+					"{C:attention}hand of round",
+					"{C:red}Destroy{} scored cards",
+				},
+			},
+			j_jrok_dakimakura = {
+				name = "Dakimakura",
+				text = {
+					"If played hand contains a",
+					"{C:attention}Flush{}, convert each played",
+					"card into a {C:attention}random suit",
+				},
+			},
 		},
 	},
 	misc = {
@@ -104,6 +120,7 @@ return {
 			k_jrok = "JROK",
 			k_jrok_powered = "(Powered",
 			k_by_jrok = "by JROK)",
+			k_felled_ex = "Felled!",
 		},
 	},
 }
