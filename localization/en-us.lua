@@ -67,6 +67,24 @@ return {
 					"bonus {C:attention}Spectral{} Card",
 				},
 			},
+			j_jrok_forgery = {
+				name = "Forgery",
+				text = {
+					"When {C:attention}Blind{} is selected,",
+					"{C:attention}destroy{} a random card in {C:attention}deck{},",
+					"and add a {C:attention}quarter{} of its",
+					"{C:chips}Chips{} to this Joker as {C:mult}Mult",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+				},
+			},
+			j_jrok_leeroooooy = {
+				name = "LEEROOOOOY!!",
+				text = {
+					"{C:attention}Retrigger{} all played cards",
+					"per {C:attention}Blind skipped{} this {C:attention}Ante",
+					"{C:inactive}(Currently {C:attention}#1#{} {C:inactive}retriggers)",
+				},
+			},
 		},
 	},
 	misc = {
