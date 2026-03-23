@@ -52,6 +52,21 @@ return {
 					"{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
 				},
 			},
+			j_jrok_shiny_rock = {
+				name = "Shiny Rock",
+				text = {
+					"{C:green}#1# in #2#{} chance to give",
+					"a playing card an {C:dark_edition}Edition",
+					"when scored",
+				},
+			},
+			j_jrok_cultist = {
+				name = "Cultist",
+				text = {
+					"{C:attention}Arcana Packs{} contain a",
+					"bonus {C:attention}Spectral{} Card",
+				},
+			},
 		},
 	},
 	misc = {
