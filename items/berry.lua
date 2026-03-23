@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "tony",
-	atlas = "Jokers",
+	atlas = "stolen",
 	rarity = 4,
 	pos = { x = 6, y = 1 },
 	soul_pos = { x = 7, y = 1 },
@@ -9,9 +9,6 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
-		return {
-			key = self.key,
-		}
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea ~= G.jokers or not context.before then
