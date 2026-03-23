@@ -616,7 +616,7 @@ function JROK.generate_joker(shop)
 		pool[#pool + 1] = "j_mime"
 		pool[#pool + 1] = "j_baron"
 	end
-	if JROK.wheel() then
+	if JROK.lucky() then
 		pool[#pool + 1] = "j_bloodstone"
 		pool[#pool + 1] = "j_space"
 		pool[#pool + 1] = "j_hallucination"
@@ -633,7 +633,7 @@ function JROK.generate_tarot()
 	if JROK.legendary() then
 		pool[#pool + 1] = "c_soul"
 	end
-	if JROK.wheel() then
+	if JROK.lucky() then
 		pool[#pool + 1] = "c_wheel_of_fortune"
 	end
 	if next(pool) then
@@ -667,7 +667,7 @@ function JROK.generate_blind()
 	if JROK.naneinf() and (G.GAME.round_resets.ante % G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2) then
 		pool[#pool + 1] = "bl_final_vessel"
 	end
-	if JROK.wheel() then
+	if JROK.lucky() then
 		pool[#pool + 1] = "bl_wheel"
 	end
 	if next(pool) then
@@ -717,11 +717,10 @@ function JROK.naneinf()
 	return G.GAME.jrok_prompt:find("baron") or G.GAME.jrok_prompt:find("mime") or G.GAME.jrok_prompt:find("inf")
 end
 
-function JROK.wheel()
+function JROK.lucky()
 	for _, str in ipairs({
 		"space",
 		"glass",
-		"wheel",
 		"fortune",
 		"luck",
 		"oops",
