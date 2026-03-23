@@ -124,7 +124,7 @@ SMODS.Joker({
 	end,
 	update = function(self, card, dt)
 		local stg = card.ability.extra
-		if not G.SETTINGS.paused then
+		if not G.SETTINGS.paused and card.area == G.jokers then
 			stg.dt_mod = stg.dt_mod + dt
 		end
 		if stg.dt_mod > 1 * G.SETTINGS.GAMESPEED then

@@ -659,7 +659,7 @@ function JROK.generate_spectral()
 	end
 end
 
-function JROK.generate_blind()
+function JROK.generate_blind(seed)
 	local pool = {}
 	if JROK.photochad() then
 		pool[#pool + 1] = "bl_plant"
@@ -671,7 +671,7 @@ function JROK.generate_blind()
 		pool[#pool + 1] = "bl_wheel"
 	end
 	if next(pool) then
-		return pseudorandom_element(pool, "jrok_prompt")
+		return pseudorandom_element(pool, seed or "jrok_prompt")
 	end
 end
 

@@ -8,12 +8,11 @@ return {
 					"give {C:white,X:mult}X#1#{} Mult",
 				},
 			},
-			j_jrok_charm_of_the_vampire = {
-				name = "Charm of the Vampire",
+			j_jrok_dream_catcher = {
+				name = "Dream Catcher",
 				text = {
-					"This Joker gains {C:mult}+#1#{} Mult",
-					"when {C:attention}Blind{} is defeated",
-					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+					"The next {C:attention}Boss Blind{} is {C:attention}#1#",
+					"{s:0.8}Prediction might change based on your actions",
 				},
 			},
 			j_jrok_normal = {
