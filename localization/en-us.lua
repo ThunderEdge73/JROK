@@ -216,6 +216,14 @@ return {
 					"enhanced card {C:attention}held-in-hand{}",
 				},
 			},
+			j_jrok_stellar_yogurt = {
+				name = "Stellar Yogurt",
+				text = {
+					"Creates {C:attention}The Fool{}",
+					"and a {C:planet}Meteor Tag{}",
+					"when sold",
+				},
+			},
 		},
 	},
 	misc = {
