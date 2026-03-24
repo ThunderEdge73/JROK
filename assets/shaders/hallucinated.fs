@@ -53,6 +53,9 @@ vec4 effect(vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords)
         uv = hallucinated;
     }
 
+    colour.rg *= vec2(1.3);
+    colour.b *= 0.7;
+
     return dissolve_mask(tex*colour, texture_coords, uv);
 }
 
