@@ -209,6 +209,13 @@ return {
 					"create a random {C:attention}Tag{}",
 				},
 			},
+			j_jrok_posh = {
+				name = "Posh Joker",
+				text = {
+					"{C:chips}+#1#{} Chips for each",
+					"enhanced card {C:attention}held-in-hand{}",
+				},
+			},
 		},
 	},
 	misc = {
