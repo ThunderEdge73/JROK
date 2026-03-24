@@ -191,6 +191,24 @@ return {
 					"out of {C:attention}Stone Cards{}",
 				},
 			},
+			j_jrok_kitsune_mask = {
+				name = "Kitsune Mask",
+				text = {
+					"{C:green}#1# in #2#{} chance for each",
+					"played {C:attention}#3#{} to create a",
+					"{C:spectral}#4#{} card when scored",
+					"Chance {C:green}doubled{} on {C:attention}#5#s{}",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			j_jrok_thrift_shop = {
+				name = "Thrift Shop",
+				text = {
+					"{C:green}#1# in #2#{} chance for each",
+					"shop {C:green}reroll{} to",
+					"create a random {C:attention}Tag{}",
+				},
+			},
 		},
 	},
 	misc = {
