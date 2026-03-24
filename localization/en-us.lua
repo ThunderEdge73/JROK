@@ -224,6 +224,38 @@ return {
 					"when sold",
 				},
 			},
+			j_jrok_slop_vulpix = {
+				name = "Vulpix Plush :)",
+				text = {
+					{
+						"When a {C:planet}Planet{} card is",
+						"sold, {C:green}#1# in #2#{} chance to",
+						"gain {C:blue}+1{} hand for this",
+						"round temporarily",
+						"If a {C:planet}Planet{} card was",
+						"sold this round,",
+						"{C:green}#3# in #4#{} chance",
+						"to lose {C:red}1{} discard",
+						"when hand is played",
+					},
+				},
+			},
+			j_jrok_slop_moist = {
+				name = "Moisturiser",
+				text = {
+					{
+						"When sold, removes {C:attention}Perishable{}",
+						"or a {C:attention}debuff{} from a",
+						"random owned Joker",
+						"If there are no existing",
+						"{C:attention}Perishable{} or {C:red}debuffed{} Jokers,",
+						"a random Joker instead",
+						"becomes {C:dark_edition}Foil{}, {C:dark_edition}Polychrome{},",
+						"or {C:dark_edition}Negative{}",
+						"{C:inactive,s:0.8}(Can override existing editions)",
+					},
+				},
+			},
 		},
 	},
 	misc = {
@@ -248,6 +280,11 @@ return {
 			jrok_unknown = "[Unknown]",
 			jrok_acquire_to_reveal = "[Acquire to reveal]",
 			k_jrok_punch_duplicate = "Consumable printed",
+			k_copyright = {
+				"{C:inactive}As an Al Language Model, I cannot promote jimborighted{}",
+				"{C:inactive}fast food brands, or refer to moments of consumerism as fleeting,{}",
+				"{C:inactive}as it goes against my terms of service.{}",
+			},
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
