@@ -11,7 +11,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	demicoloncompat = false,
 	config = {
-		extra = { mult = 4, times = 3, count = 0 },
+		extra = { mult = 6, times = 3, count = 0 },
 	},
 	loc_vars = function(self, info_queue, card)
 		return {
