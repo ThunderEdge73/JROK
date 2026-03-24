@@ -5,8 +5,8 @@ return {
 				name = "Hallucinated",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-				}
-			}
+				},
+			},
 		},
 		Joker = {
 			j_jrok_spoon_bender = {
@@ -161,6 +161,22 @@ return {
 					"{C:inactive}(#2#){}",
 				},
 			},
+			j_jrok_copycat = {
+				name = "Copy Cat",
+				text = {
+					"Copies the effect of a {C:attention}random{} other Joker",
+					"{C:inactive}(Changes target at end of shop){}",
+					"{C:inactive}(Currently {C:attention}#1#{C:inactive}){}",
+				},
+			},
+			j_jrok_obsession = {
+				name = "Obsession",
+				text = {
+					"Retriggers all cards",
+					"of rank {C:attention}#1#{}, {C:blue}#2#{} time#3#",
+					"{C:inactive}(Rank selected randomly on spawn)",
+				},
+			},
 		},
 	},
 	misc = {
@@ -191,7 +207,7 @@ return {
 			jrok_punch_card_will = "Next consumable will be duplicated!",
 		},
 		labels = {
-			jrok_hallucinated = "Hallucinated"
-		}
+			jrok_hallucinated = "Hallucinated",
+		},
 	},
 }
