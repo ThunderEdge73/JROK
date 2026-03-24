@@ -1,5 +1,13 @@
 return {
 	descriptions = {
+		Edition = {
+			e_jrok_hallucinated = {
+				name = "Hallucinated",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+				}
+			}
+		},
 		Joker = {
 			j_jrok_spoon_bender = {
 				name = "Spoon Bender",
@@ -180,5 +188,8 @@ return {
 			jrok_punch_card_more = "#1# more required...",
 			jrok_punch_card_will = "Next consumable will be duplicated!",
 		},
+		labels = {
+			jrok_hallucinated = "Hallucinated"
+		}
 	},
 }

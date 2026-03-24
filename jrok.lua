@@ -858,4 +858,29 @@ function JROK.recursive_load(path)
 	end
 end
 
+SMODS.Shader({
+	key = "hallucinated",
+	path = "hallucinated.fs",
+	send_vars = function(sprite, card)
+		return {
+			seed = card and card.edition.jrok_hallucination_seed or { 0, 0 },
+		}
+	end,
+})
+
+SMODS.Edition({
+	key = "hallucinated",
+	shader = "hallucinated",
+	config = { extra = { xmult = 0.75 } },
+	on_apply = function(card)
+		card.edition.jrok_hallucination_seed = {
+			math.random(),
+			math.random(),
+		}
+	end,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.edition.extra.xmult } }
+	end,
+})
+
 JROK.recursive_load("items")
