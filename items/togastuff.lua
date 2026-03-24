@@ -1,5 +1,6 @@
 SMODS.Joker({
 	key = "toiletrock",
+    stolen_from = "TOGA's Stuff",
 	unlocked = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
@@ -46,6 +47,7 @@ end
 
 SMODS.Joker({
 	key = "wishingstones",
+    stolen_from = "TOGA's Stuff",
 	unlocked = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
