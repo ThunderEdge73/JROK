@@ -256,6 +256,25 @@ return {
 					},
 				},
 			},
+			j_jrok_sora = {
+				name = "Sora",
+				text = {
+					"This Joker gains {X:mult,C:white}X#2#{} Mult",
+					"for each scored card",
+					"with a {C:hearts}Heart{} suit, resets",
+					"when {C:attention}Boss Blind{} is defeated.{}",
+					"{C:inactive}(Currently {X:mult,C:white}X#1# {C:inactive} Mult)",
+				},
+			},
+			j_jrok_paopufruit = {
+				name = "Paopu Fruit",
+				text = {
+					"Add a random {C:dark_edition}Edition{},",
+					"{C:dark_edition}Enhancement{}, and {C:attention}Seal{} to",
+					"first scored card for",
+					"the next {C:attention}#1#{} hands",
+				},
+			},
 		},
 	},
 	misc = {
