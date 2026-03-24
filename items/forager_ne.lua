@@ -15,7 +15,6 @@ SMODS.Joker({
 	config = { extra = { odds = 7 } },
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_lucky
-		info_queue[#info_queue + 1] = { key = "credits_fizlok", set = "Other" }
 		local numerator, denominator =
 			SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "j8mod_kitsune_mask")
 		return {
@@ -84,8 +83,6 @@ SMODS.Joker({
 	unlocked = true,
 	config = { extra = { odds = 6 } },
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { key = "credits_j8", set = "Other" }
-		info_queue[#info_queue + 1] = { key = "credits_mario_santos", set = "Other" }
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "j8mod_thrift_shop")
 		return { vars = { numerator, denominator } }
 	end,
