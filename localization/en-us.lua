@@ -177,6 +177,20 @@ return {
 					"{C:inactive}(Rank selected randomly on spawn)",
 				},
 			},
+			j_toga_toiletrock = {
+				name = "Toilet Rock",
+				text = {
+					"{C:attention}#1#es{} can be made",
+					"out of {C:attention}Stone Cards{}",
+				},
+			},
+			j_toga_wishingstones = {
+				name = "Wishing Stones",
+				text = {
+					"{C:attention}#1#s{} can be made",
+					"out of {C:attention}Stone Cards{}",
+				},
+			},
 		},
 	},
 	misc = {
