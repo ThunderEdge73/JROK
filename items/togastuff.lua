@@ -7,8 +7,8 @@ SMODS.Joker({
 		return { vars = { localize("Flush", "poker_hands") } }
 	end,
 	rarity = 2,
-	atlas = "TOGAJokersOther",
-	pos = { x = 1, y = 2 },
+	atlas = "stolen",
+	pos = { x = 4, y = 2 },
 	cost = 6,
 	blueprint_compat = false,
 })
@@ -54,8 +54,8 @@ SMODS.Joker({
 		return { vars = { localize("Straight", "poker_hands") } }
 	end,
 	rarity = 2,
-	atlas = "TOGAJokersOther",
-	pos = { x = 2, y = 2 },
+	atlas = "stolen",
+	pos = { x = 5, y = 2 },
 	cost = 6,
 	blueprint_compat = false,
 })
