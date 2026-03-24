@@ -881,6 +881,7 @@ SMODS.Edition({
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.edition.extra.xmult } }
 	end,
+	apply_to_float = true
 })
 
 JROK.recursive_load("items")

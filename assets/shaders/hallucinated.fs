@@ -30,6 +30,10 @@ float random (vec2 st, vec2 seed) {
     return fract(sin(dot(st.xy,seed.xy))*43758.5453123);
 }
 
+float random_3d(vec3 co){
+    return fract(sin(dot(co.xyz ,vec3(12.9898,78.233,45.832))) * 43758.5453);
+}
+
 vec4 effect(vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords) {
     // Take pixel color (rgba) from `texture` at `texture_coords`, equivalent of texture2D in GLSL
     vec4 tex = Texel(texture, texture_coords);
@@ -53,8 +57,13 @@ vec4 effect(vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords)
         uv = hallucinated;
     }
 
-    colour.rg *= vec2(1.3);
-    colour.b *= 0.7;
+    vec3 colour_mult = vec3(fract(n * uv.x * 327.21), fract(n * uv.y * 149.92), fract(n * (uv.x + uv.y) * 106.46));
+    colour_mult = 1.2 - 0.2 * colour_mult;
+    colour.r *= 1.3 * colour_mult.r;
+    colour.g *= 0.75 * colour_mult.g;
+    colour.b *= 0.3 * colour_mult.b;
+
+    colour.a *= 0.7;
 
     return dissolve_mask(tex*colour, texture_coords, uv);
 }
