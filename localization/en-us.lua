@@ -100,6 +100,8 @@ return {
 					"{X:red,C:white}X#1#{} Mult on {C:attention}first",
 					"{C:attention}hand of round",
 					"{C:red}Destroy{} scored cards",
+					"in {C:attention}first hand",
+					"{C:attention}of round",
 				},
 			},
 			j_jrok_dakimakura = {
