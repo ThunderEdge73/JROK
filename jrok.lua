@@ -39,6 +39,7 @@ function init_localization()
 	init_loc_hook()
 end
 
+JROK_MOD = SMODS.current_mod
 JROK = {}
 JROK.prompt_text = ""
 JROK.menu_prompt = ""
@@ -881,7 +882,105 @@ SMODS.Edition({
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.edition.extra.xmult } }
 	end,
-	apply_to_float = true
+	apply_to_float = true,
 })
+
+local smods_badges_hook = SMODS.create_mod_badges
+function SMODS.create_mod_badges(obj, badges)
+	if obj and obj.original_mod == JROK_MOD and obj.stolen_from then
+		if not SMODS.config.no_mod_badges and obj and obj.mod and obj.mod.display_name and not obj.no_mod_badges then
+			local mods = {}
+			badges.mod_set = badges.mod_set or {}
+			if not badges.mod_set[obj.mod.id] and not obj.no_main_mod_badge then
+				table.insert(mods, obj.mod)
+			end
+			badges.mod_set[obj.mod.id] = true
+			if obj.dependencies then
+				for _, v in ipairs(obj.dependencies) do
+					local m = assert(SMODS.find_mod(v)[1], ('Could not find mod "%s".'):format(v))
+					if not badges.mod_set[m.id] then
+						table.insert(mods, m)
+						badges.mod_set[m.id] = true
+					end
+				end
+			end
+			for _, mod in ipairs(mods) do
+				badges[#badges + 1] = create_jrok_badge(obj.stolen_from, 0.9)
+			end
+		end
+	end
+	return smods_badges_hook(obj, badges)
+end
+
+function JROK.split_mod_badge_text(str)
+	local ret = {}
+	local floored = math.floor(string.len(str) / 4)
+	local remainder = string.len(str) % 4
+	local last_index = 1
+	for i = 0, 3 do
+		local p, s = string.sub("JROK", 1, i), string.sub("JROK", i + 2, 4)
+		local res = ""
+		local first = last_index
+		if i < remainder then
+			last_index = last_index + floored
+		else
+			last_index = last_index + floored - 1
+		end
+		res = string.sub(str, first, last_index)
+		last_index = last_index + 1
+		res = p .. res .. s
+		ret[#ret + 1] = res
+	end
+	return ret
+end
+
+function create_jrok_badge(_string, scaling)
+	local strings = JROK.split_mod_badge_text(_string)
+	for _ = 1, 11 do
+		strings[#strings + 1] = "JROK"
+	end
+	scaling = scaling or 0.9
+	return {
+		n = G.UIT.R,
+		config = { align = "cm" },
+		nodes = {
+			{
+				n = G.UIT.R,
+				config = {
+					align = "cm",
+					colour = G.C.BLACK,
+					r = 0.1,
+					minw = 2,
+					minh = 0.4 * scaling,
+					emboss = 0.05,
+					padding = 0.03 * scaling,
+				},
+				nodes = {
+					{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+					{
+						n = G.UIT.O,
+						config = {
+							object = DynaText({
+								string = strings,
+								colours = { G.C.WHITE },
+								float = true,
+								shadow = true,
+								offset_y = -0.05,
+								silent = true,
+								spacing = 1,
+								scale = 0.33 * scaling,
+								pop_in_rate = 9999999,
+								random_element = true,
+								pop_delay = 0.3,
+								min_cycle_time = 0,
+							}),
+						},
+					},
+					{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+				},
+			},
+		},
+	}
+end
 
 JROK.recursive_load("items")

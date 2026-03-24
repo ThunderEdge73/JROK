@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "jetfish",
+	stolen_from = "Willatro",
 	rarity = 2,
 	atlas = "stolen",
 	pos = { x = 3, y = 0 },
@@ -53,6 +54,7 @@ SMODS.Joker({
 	key = "cobbler",
 	rarity = 1,
 	atlas = "stolen",
+	stolen_from = "Willatro",
 	pos = { x = 4, y = 0 },
 	cost = 6,
 	blueprint_compat = true,

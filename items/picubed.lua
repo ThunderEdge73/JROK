@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "forgery",
+	stolen_from = "pi_cubed's Jokers",
 	rarity = 2,
 	atlas = "stolen",
 	pos = { x = 7, y = 0 },
@@ -102,6 +103,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "leeroooooy",
+	stolen_from = "pi_cubed's Jokers",
 	rarity = 2,
 	atlas = "stolen",
 	pos = { x = 8, y = 0 },

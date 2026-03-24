@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "philosophical",
+	stolen_from = "More Fluff",
 	config = {
 		card_limit = 1,
 	},
@@ -23,6 +24,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "basepaul",
+	stolen_from = "More Fluff",
 	config = {
 		extra = { x_mult = 1.25 },
 	},

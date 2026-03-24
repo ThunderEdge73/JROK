@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "spoon_bender",
+	stolen_from = "TBOJ",
 	pos = { x = 0, y = 0 },
 	config = { extra = { Xmult_multi = 2 } },
 	loc_vars = function(self, info_queue, card)
@@ -28,6 +29,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "dream_catcher",
+	stolen_from = "TBOJ",
 	pos = { x = 1, y = 0 },
 	config = { extra = {} },
 	loc_vars = function(self, info_queue, card)

@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "shiny_rock",
+	stolen_from = "Opalstuff",
 	config = { extra = { odds = 20 } },
 	rarity = 2,
 	atlas = "stolen",
@@ -37,6 +38,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "cultist",
+	stolen_from = "Opalstuff",
 	rarity = 1,
 	atlas = "stolen",
 	pos = { x = 6, y = 0 },

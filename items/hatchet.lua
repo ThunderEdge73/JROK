@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "hatchet",
+	stolen_from = "Hatchet",
 	config = {
 		extra = {
 			xmult = 2.5,
@@ -45,6 +46,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "dakimakura",
+	stolen_from = "Hatchet",
 	config = {
 		extra = {},
 	},

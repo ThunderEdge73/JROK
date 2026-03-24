@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "punch_card",
+	stolen_from = "Adventure Map",
 	config = { extra = { Xmult = 4, every = 4, remaining = 4 } },
 	atlas = "stolen",
 	pos = { x = 8, y = 1 },

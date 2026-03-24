@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "normal",
+	stolen_from = "Maximus",
 	atlas = "stolen",
 	pos = {
 		x = 2,
@@ -44,6 +45,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "4d",
+	stolen_from = "Maximus",
 	atlas = "stolen_4d",
 	pos = {
 		x = 0,

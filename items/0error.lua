@@ -1,7 +1,8 @@
--- frangnosquest, missingnumber
+-- notmario, missingnumber
 
 SMODS.Joker({
 	key = "dazzles",
+	stolen_from = "0 ERROR",
 	pos = { x = 4, y = 1 },
 	atlas = "stolen",
 	rarity = 1,
@@ -38,6 +39,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "croque_madame",
+	stolen_from = "0 ERROR",
 	atlas = "stolen",
 	pos = { x = 5, y = 1 },
 	rarity = 1,

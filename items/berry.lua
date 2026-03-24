@@ -2,6 +2,7 @@
 
 SMODS.Joker({
 	key = "tony",
+	stolen_from = "Berry's Legendaries",
 	atlas = "stolen",
 	rarity = 4,
 	pos = { x = 6, y = 1 },
