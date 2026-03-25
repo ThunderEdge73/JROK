@@ -326,6 +326,20 @@ return {
 					"{C:inactive} (Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
 				},
 			},
+			j_jrok_grosdish = {
+				name = "Grosdish",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"{C:green}#2# in #3# chance{} to go extinct",
+				},
+			},
+			j_jrok_spin = {
+				name = "Do a Barrel Roll",
+				text = {
+					"Scored cards will do a spin",
+					"{C:dark_edition}+1{C:attention} Joker Slot",
+				},
+			},
 		},
 	},
 	misc = {
