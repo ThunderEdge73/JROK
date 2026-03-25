@@ -310,6 +310,22 @@ return {
 					"{C:inactive}(Currently {C:white,X:red}X#1#{C:inactive} Mult)",
 				},
 			},
+			j_jrok_atmospheric = {
+				name = "Atmospheric Joker",
+				text = {
+					"Retriggers the {C:attention}first three{}",
+					"scored {C:attention}5s{} twice",
+				},
+			},
+			j_jrok_precious = {
+				name = "Precious Joker",
+				text = {
+					"This Joker gains {X:mult,C:white}X#1#{} Mult",
+					"each time a {C:attention}5{} is scored",
+					"Resets at end of round",
+					"{C:inactive} (Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+				},
+			},
 		},
 	},
 	misc = {
