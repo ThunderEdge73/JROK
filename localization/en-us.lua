@@ -152,6 +152,15 @@ return {
 					"{C:attention}Foil{} and an {C:attention}Ace{}",
 				},
 			},
+			j_jrok_nyala = {
+				name = "Nyala",
+				text = {
+					"Played hands turn their respective",
+					"held {C:planet}Planets{} into {C:enhanced}Black Holes{}",
+					"{X:mult,C:white}X#2#{} Mult for every {C:enhanced}Black Hole{} used",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+				},
+			},
 			j_jrok_punch_card = {
 				name = "Punch Card",
 				text = {
@@ -426,6 +435,7 @@ return {
 			jrok_active = "Active",
 			jrok_inactive = "Inactive",
 			jrok_disabled = "Disabled!",
+			jrok_nom = "Nom!",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
