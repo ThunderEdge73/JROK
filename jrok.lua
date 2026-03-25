@@ -987,4 +987,5 @@ JROK.recursive_load("items")
 
 SMODS.current_mod.reset_game_globals = function(run_start)
 	JROK.reset_ship_card()
+	JROK.reset_berry_ranks()
 end

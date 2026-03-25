@@ -18,9 +18,6 @@ SMODS.Joker({
 	perishable_compat = true,
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pools = {
-		["kity"] = true,
-	},
 	config = {
 		immutable = {
 			targetname = "None",

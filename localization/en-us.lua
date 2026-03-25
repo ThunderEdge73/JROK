@@ -357,6 +357,43 @@ return {
 					"before {C:attention}Tag{} reward",
 				},
 			},
+			j_jrok_berry_golden = {
+				name = "Goldenberry",
+				text = {
+					{
+						"Each scored",
+						"{C:attention}#1#{} or {C:attention}#2#",
+						"earns {C:money}$#3#{}-{C:money}$#4#",
+						"{s:0.1} ",
+						"{C:inactive}Ranks change",
+						"{C:inactive}every round",
+					},
+					{
+						"{C:red,s:0.9,E:2}Eaten{s:0.9} when",
+						"{s:0.9}no {C:attention,s:0.9}#1#{s:0.9} or {C:attention,s:0.9}#2#",
+						"{s:0.9}scored this round",
+					},
+				},
+			},
+			j_jrok_berry_shimmer = {
+				name = "Shimmerberry",
+				text = {
+					{
+						"Each scored",
+						"{C:attention}#1#{} or {C:attention}#2#",
+						"{C:green}reduces {C:attention}Blind",
+						"{C:attention}Size{} by {C:SEMBY_percent}#3#%",
+						"{s:0.1} ",
+						"{C:inactive}Ranks change",
+						"{C:inactive}every round",
+					},
+					{
+						"{C:red,s:0.9,E:2}Eaten{s:0.9} when",
+						"{s:0.9}no {C:attention,s:0.9}#1#{s:0.9} or {C:attention,s:0.9}#2#",
+						"{s:0.9}scored this round",
+					},
+				},
+			},
 		},
 	},
 	misc = {
@@ -393,6 +430,7 @@ return {
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
 			jrok_punch_card_will = "Next consumable will be duplicated!",
+			jrok_percentage_minus = "-#1#%",
 		},
 		labels = {
 			jrok_hallucinated = "Hallucinated",
