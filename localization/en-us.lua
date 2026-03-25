@@ -412,6 +412,19 @@ return {
 					"in {C:attention}#2#{} rounds",
 				},
 			},
+			j_jrok_thunderedge = {
+				name = "ThunderEdge",
+				text = {
+					{
+						"This Joker gains {X:mult,C:white}X#1#{} Mult",
+						"for every {C:money}$#2#{} {C:inactive}($#3#){} earned",
+						"{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
+					},
+					{
+						"{C:inactive,s:0.8}How the hell did I get here?",
+					},
+				}
+			}
 		},
 	},
 	misc = {

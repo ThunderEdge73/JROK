@@ -43,6 +43,7 @@ SMODS.Joker({ --Gold Ship
 })
 
 function JROK.reset_ship_card()
+	G.GAME.current_round.ship_card = G.GAME.current_round.ship_card or {}
 	G.GAME.current_round.ship_card.rank = "Ace"
 	G.GAME.current_round.ship_card.id = 14
 	local valid_ship_cards = {}
