@@ -69,6 +69,7 @@ SMODS.Joker({
 	end,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.c_black_hole
 		return { vars = {
 			card.ability.extra.x_mult,
 			card.ability.extra.x_mult_gain,
