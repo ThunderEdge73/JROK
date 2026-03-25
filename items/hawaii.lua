@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "atmospheric",
 	atlas = "stolen",
-    stolen_from = "Hawaii Pt. II",
+	stolen_from = "Hawaii Pt. II",
 	rarity = 2,
 	cost = 5,
 	unlocked = true,
@@ -38,7 +38,7 @@ SMODS.Joker({
 
 SMODS.Joker({
 	key = "precious",
-    stolen_from = "Hawaii Pt. II",
+	stolen_from = "Hawaii Pt. II",
 	loc_txt = {
 		name = "Precious Joker",
 		text = {
