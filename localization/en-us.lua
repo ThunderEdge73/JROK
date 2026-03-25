@@ -340,6 +340,22 @@ return {
 					"{C:dark_edition}+1{C:attention} Joker Slot",
 				},
 			},
+			j_jrok_detour = {
+				name = "Detour",
+				text = {
+					"Allows {C:attention}Straights{}",
+					"to wrap around",
+					"{C:inactive}(ex: {C:attention}Q K A 2 3{C:inactive}){}",
+				},
+			},
+			j_jrok_twins = {
+				name = "The Twins",
+				text = {
+					"When {C:attention}Blind{} is skipped,",
+					"create a {C:attention}Double Tag{}",
+					"before {C:attention}Tag{} reward",
+				},
+			},
 		},
 	},
 	misc = {
