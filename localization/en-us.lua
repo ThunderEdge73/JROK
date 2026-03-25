@@ -403,6 +403,15 @@ return {
 					},
 				},
 			},
+			j_jrok_baguette = {
+				name = "Baguette",
+				text = {
+					"Played {C:attention}face cards{}",
+					"give {C:money}$#1#{} when scored",
+					"{C:red}Self-destructs",
+					"in {C:attention}#2#{} rounds",
+				},
+			},
 		},
 	},
 	misc = {
