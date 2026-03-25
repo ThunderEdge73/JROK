@@ -275,6 +275,23 @@ return {
 					"the next {C:attention}#1#{} hands",
 				},
 			},
+			j_jrok_orchid = {
+				name = "Orchid",
+				text = {
+					"This Joker gains {C:mult}+#1#{} Mult",
+					"per hand played with",
+					"a scoring {C:attention}Jack{}",
+					"{C:inactive}(Currently {C:mult}+#2#{}{C:inactive} Mult){}",
+				},
+			},
+			j_jrok_sunflower = {
+				name = "Sunflower",
+				text = {
+					"After skipping a blind",
+					"{C:attention}disable{} the {C:attention}Boss Blind{}",
+					"{C:inactive}(#1#){}",
+				},
+			},
 		},
 	},
 	misc = {
@@ -304,6 +321,9 @@ return {
 				"{C:inactive}fast food brands, or refer to moments of consumerism as fleeting,{}",
 				"{C:inactive}as it goes against my terms of service.{}",
 			},
+			jrok_active = "Active",
+			jrok_inactive = "Inactive",
+			jrok_disabled = "Disabled!",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
