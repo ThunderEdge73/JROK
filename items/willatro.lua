@@ -15,6 +15,9 @@ SMODS.Joker({
 			mult = 0,
 		},
 	},
+	in_pool = function(self, args)
+		return false
+	end,
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
@@ -57,6 +60,9 @@ SMODS.Joker({
 	stolen_from = "Willatro",
 	pos = { x = 4, y = 0 },
 	cost = 6,
+	in_pool = function(self, args)
+		return false
+	end,
 	blueprint_compat = true,
 	eternal_compat = false,
 	config = {

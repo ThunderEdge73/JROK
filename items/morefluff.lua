@@ -20,6 +20,9 @@ SMODS.Joker({
 			vars = { center.ability.card_limit },
 		}
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 SMODS.Joker({
@@ -37,6 +40,9 @@ SMODS.Joker({
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,
+	in_pool = function(self, args)
+		return false
+	end,
 	demicoloncompat = true,
 	loc_vars = function(self, info_queue, center)
 		return {

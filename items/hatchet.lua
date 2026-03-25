@@ -24,6 +24,9 @@ SMODS.Joker({
 			},
 		}
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main and G.GAME.current_round.hands_played == 0 then
 			return {
@@ -58,6 +61,9 @@ SMODS.Joker({
 	perishable_compat = true,
 	unlocked = true,
 	atlas = "stolen",
+	in_pool = function(self, args)
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.joker_main and next(context.poker_hands["Flush"]) then
 			for i = 1, #context.full_hand do

@@ -34,20 +34,14 @@ SMODS.Joker({
 			end
 		end
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 SMODS.Joker({
 	key = "precious",
 	stolen_from = "Hawaii Pt. II",
-	loc_txt = {
-		name = "Precious Joker",
-		text = {
-			"This joker gains {X:mult,C:white} #1#X {} Mult",
-			"each time a {C:attention}5{} is scored.",
-			"Resets after each round.",
-			"{C:inactive} (Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
-		},
-	},
 	atlas = "stolen",
 	rarity = 2,
 	cost = 5,
@@ -89,5 +83,8 @@ SMODS.Joker({
 				}
 			end
 		end
+	end,
+	in_pool = function(self, args)
+		return false
 	end,
 })

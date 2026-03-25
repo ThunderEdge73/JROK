@@ -99,6 +99,9 @@ SMODS.Joker({
 			}
 		end
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 SMODS.Joker({
@@ -108,6 +111,9 @@ SMODS.Joker({
 	atlas = "stolen",
 	pos = { x = 8, y = 0 },
 	cost = 5,
+	in_pool = function(self, args)
+		return false
+	end,
 	discovered = true,
 	blueprint_compat = true,
 	perishable_compat = true,

@@ -13,6 +13,9 @@ SMODS.Joker({
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "opal_sr1")
 		return { vars = { numerator, denominator } }
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play then
 			local chosencard = context.other_card
@@ -44,6 +47,9 @@ SMODS.Joker({
 	pos = { x = 6, y = 0 },
 	cost = 5,
 	blueprint_compat = true,
+	in_pool = function(self, args)
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.open_booster and context.card.ability.name:find("Arcana") then
 			G.E_MANAGER:add_event(Event({

@@ -37,6 +37,9 @@ SMODS.Joker({ --Gold Ship
 			end
 		end
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 function JROK.reset_ship_card()
@@ -114,5 +117,8 @@ SMODS.Joker({ --TM Opera O
 				Xmult_mod = card.ability.extra.Xmult,
 			}
 		end
+	end,
+	in_pool = function(self, args)
+		return false
 	end,
 })

@@ -21,6 +21,9 @@ SMODS.Joker({
 			Xmult_gain = 0.2,
 		},
 	},
+	in_pool = function(self, args)
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and not context.blueprint then
 			if context.other_card:is_suit("Hearts") then
@@ -57,6 +60,9 @@ SMODS.Joker({
 				card.ability.extra.hands_left, -- 1
 			},
 		}
+	end,
+	in_pool = function(self, args)
+		return false
 	end,
 	stolen_from = "Final Mix",
 	rarity = 2,

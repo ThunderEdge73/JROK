@@ -11,6 +11,9 @@ SMODS.Joker({
 	pos = { x = 4, y = 2 },
 	cost = 6,
 	blueprint_compat = false,
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 local getflushref = get_flush
@@ -57,6 +60,9 @@ SMODS.Joker({
 	atlas = "stolen",
 	pos = { x = 5, y = 2 },
 	cost = 6,
+	in_pool = function(self, args)
+		return false
+	end,
 	blueprint_compat = false,
 })
 

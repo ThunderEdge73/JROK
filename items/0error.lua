@@ -35,6 +35,9 @@ SMODS.Joker({
 			end
 		end
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 SMODS.Joker({
@@ -65,4 +68,7 @@ SMODS.Joker({
 		end
 	end,
 	pronouns = "she_her",
+	in_pool = function(self, args)
+		return false
+	end,
 })

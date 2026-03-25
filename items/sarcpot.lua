@@ -27,7 +27,7 @@ SMODS.Joker({
 	cost = 5,
 	blueprint_compat = true,
 	in_pool = function(self, args)
-		return true
+		return false
 	end,
 	calculate = function(self, card, context)
 		if context.skip_blind and not context.blueprint and card.ability.extra.active ~= true then
@@ -78,14 +78,6 @@ SMODS.Joker({
 	},
 	cost = 5,
 	in_pool = function(self, args)
-		if G.playing_cards then
-			for i = 1, #G.playing_cards do
-				if G.playing_cards[i]:get_id() == 11 then
-					return true
-				end
-			end
-		end
-
 		return false
 	end,
 	calculate = function(self, card, context)

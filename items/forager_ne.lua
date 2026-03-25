@@ -67,6 +67,9 @@ SMODS.Joker({
 			end
 		end
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 SMODS.Joker({
@@ -85,6 +88,9 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "j8mod_thrift_shop")
 		return { vars = { numerator, denominator } }
+	end,
+	in_pool = function(self, args)
+		return false
 	end,
 	calculate = function(self, card, context)
 		if context.reroll_shop then

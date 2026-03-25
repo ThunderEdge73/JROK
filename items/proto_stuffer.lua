@@ -9,6 +9,9 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
 	end,
+	in_pool = function(self, args)
+		return false
+	end,
 	calculate = function(self, card, context)
 		if context.selling_self then
 			-- do stuff here
@@ -55,7 +58,9 @@ SMODS.Joker({
 			SMODS.get_probability_vars(card, card.ability.extra.numer2, card.ability.extra.denom2, "lost discard")
 		return { vars = { numer1, denom1, numer2, denom2 } }
 	end,
-
+	in_pool = function(self, args)
+		return false
+	end,
 	calculate = function(self, card, context)
 		local ret = {}
 		if context.selling_card and context.card.ability.set == "Planet" then
