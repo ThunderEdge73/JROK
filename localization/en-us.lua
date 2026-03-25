@@ -292,6 +292,24 @@ return {
 					"{C:inactive}(#1#){}",
 				},
 			},
+			j_jrok_goldship = {
+				name = "Gold Ship",
+				text = {
+					"Earn {C:money}money{} for each {C:attention}#1#",
+					"drawn to hand, rank",
+					"changes every round",
+					"{C:inactive,S:0.8}Golshi decides how much",
+				},
+			},
+			j_jrok_tmoperao = {
+				name = "TM Opera O",
+				text = {
+					"This Joker gains {C:white,X:red}X#2#{} Mult",
+					"per {C:attention}consecutive{} hand played",
+					"with a scoring {C:attention}face{} card",
+					"{C:inactive}(Currently {C:white,X:red}X#1#{C:inactive} Mult)",
+				},
+			},
 		},
 	},
 	misc = {
