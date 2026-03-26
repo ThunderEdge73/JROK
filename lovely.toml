@@ -282,6 +282,11 @@ Jimbo.states.collide.can = true
 Jimbo.states.click.can = true
 function Jimbo:click()
 	Card_Character.click(self)
-	G.FUNCS.jrok_feedback_prompt()
+    local res = math.random()
+    if res < 0.5 then
+        love.system.openURL(JROK.feedback_pool[math.random(#JROK.feedback_pool)])
+    else
+	    G.FUNCS.jrok_feedback_prompt()
+    end
 end
 '''
