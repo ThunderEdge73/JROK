@@ -526,7 +526,7 @@ SMODS.current_mod.calculate = function(self, context)
 	end
 	if context.money_altered and context.amount < 0 then
 		G.GAME.round_scores.jrok_gallons.amt = G.GAME.round_scores.jrok_gallons.amt
-			+ math.random(-(math.floor(context.amount / 2)), -(math.floor(context.amount * 1.5)))
+			+ math.random(-context.amount, -context.amount * 3)
 	end
 end
 
