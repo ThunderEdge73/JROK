@@ -13,6 +13,9 @@ end
 SMODS.Joker({
     key = "ghost",
     stolen_from = "Phanta",
+    in_pool = function (self, args)
+        return false
+    end,
 	config = { extra = { xmult = 1 } },
 	rarity = 3,
 	atlas = "stolen",
@@ -53,6 +56,9 @@ SMODS.Joker({
 		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "ghostinabucket")
 		return { vars = { num, denom } }
 	end,
+    in_pool = function (self, args)
+        return false
+    end,
 	blueprint_compat = true,
 	eternal_compat = true,
 	perishable_compat = true,

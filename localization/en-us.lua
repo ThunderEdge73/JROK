@@ -490,6 +490,37 @@ return {
 					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult){}",
 				},
 			},
+			j_jrok_d0 = {
+				name = "D0",
+				text = {
+					"Multiplies all {C:attention}listed{}",
+					"{C:green,E:1}probabilities{} by {C:attention}0",
+					"{C:inactive}(ex. {C:green}1 in 3{C:inactive} -> {C:green}0 in 3{C:inactive})",
+				},
+			},
+			j_jrok_lambda_calculus = {
+				name = "Lambda Calculus",
+				text = {
+					"Whenever another Joker {C:attention}triggers{}",
+					"add its {C:attention}values{} to this Jokers {C:blue}Chips{}",
+					"{C:red}Resets{} when this Joker triggers",
+					"{C:inactive}(Currently {C:blue}+#1#{C:inactive} Chips)",
+				},
+			},
+			j_jrok_subterfuge = {
+				name = "Subterfuge",
+				text = {
+					"Destroys the {C:attention}first played",
+					"{C:attention}hand{} every round",
+				},
+			},
+			j_jrok_deadringer = {
+				name = "Deadringer",
+				text = {
+					"Retrigger scored {C:attention}#1#s{} and {C:attention}#2#s",
+					"once, and scored {C:attention}#3#s{} twice",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
@@ -536,6 +567,7 @@ return {
 			k_jrok_spell = "Spell",
 			k_jrok_inactive = "Inactive...",
 			ph_jrok_dead_ringer_saved = "Feigned Death",
+			k_jrok_destroyed_ex = "Destroyed!",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
