@@ -469,7 +469,7 @@ return {
 				name = "Uniku",
 				text = {
 					"{C:attention}Retrigger{} all scored",
-					"{C:attention}7s{} #1# time#<s>1#",
+					"{C:attention}7{}s {C:attention}#1#{} times",
 				},
 			},
 			j_jrok_ghostinabucket = {
