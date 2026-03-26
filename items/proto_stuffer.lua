@@ -8,6 +8,8 @@ SMODS.Joker({
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
 	end,
 	in_pool = function(self, args)
 		return false
