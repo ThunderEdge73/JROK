@@ -209,7 +209,7 @@ function G.FUNCS.jrok_start_run_prompt(e)
 	G.FUNCS.overlay_menu({
 		definition = uidef,
 		config = {
-			no_esc = G.STAGE == G.STAGES.RUN,
+			no_esc = G.STATE == G.STATES.GAME_OVER,
 		},
 	})
 end
@@ -409,7 +409,7 @@ function G.FUNCS.jrok_menu_prompt(e)
 end
 
 function G.FUNCS.jrok_can_exit(e)
-	if G.STAGE == G.STAGES.RUN then
+	if G.STATE == G.STATES.GAME_OVER then
 		e.config.button = nil
 		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
 	else
