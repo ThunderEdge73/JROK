@@ -572,11 +572,6 @@ return {
 			jrok_unknown = "[Unknown]",
 			jrok_acquire_to_reveal = "[Acquire to reveal]",
 			k_jrok_punch_duplicate = "Consumable printed",
-			k_copyright = {
-				"{C:inactive}As an Al Language Model, I cannot promote jimborighted{}",
-				"{C:inactive}fast food brands, or refer to moments of consumerism as fleeting,{}",
-				"{C:inactive}as it goes against my terms of service.{}",
-			},
 			jrok_active = "Active",
 			jrok_inactive = "Inactive",
 			jrok_disabled = "Disabled!",
@@ -585,6 +580,7 @@ return {
 			k_jrok_inactive = "Inactive...",
 			ph_jrok_dead_ringer_saved = "Feigned Death",
 			k_jrok_destroyed_ex = "Destroyed!",
+			ph_score_jrok_gallons = "Gallons Of Water Used",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",

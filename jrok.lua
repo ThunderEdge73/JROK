@@ -178,6 +178,7 @@ function G.FUNCS.jrok_start_run_prompt(e)
 									hover = true,
 									colour = G.C.ORANGE,
 									button = "exit_overlay_menu",
+									func = "jrok_can_exit",
 									shadow = true,
 									focus_args = { nav = "wide", button = "b" },
 								},
@@ -208,7 +209,7 @@ function G.FUNCS.jrok_start_run_prompt(e)
 	G.FUNCS.overlay_menu({
 		definition = uidef,
 		config = {
-			--no_esc = true,
+			no_esc = G.STATE == G.STATES.GAME_OVER,
 		},
 	})
 end
@@ -365,6 +366,7 @@ function G.FUNCS.jrok_menu_prompt(e)
 									colour = G.C.ORANGE,
 									button = "exit_overlay_menu",
 									shadow = true,
+									func = "jrok_can_exit",
 									focus_args = { nav = "wide", button = "b" },
 								},
 								nodes = {
@@ -394,7 +396,7 @@ function G.FUNCS.jrok_menu_prompt(e)
 	G.FUNCS.overlay_menu({
 		definition = uidef,
 		config = {
-			--no_esc = true,
+			no_esc = G.STATE == G.STATES.GAME_OVER,
 		},
 	})
 	G.E_MANAGER:add_event(Event({
@@ -407,6 +409,16 @@ function G.FUNCS.jrok_menu_prompt(e)
 			return true
 		end,
 	}))
+end
+
+function G.FUNCS.jrok_can_exit(e)
+	if G.STATE == G.STATES.GAME_OVER then
+		e.config.button = nil
+		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+	else
+		e.config.button = "exit_overlay_menu"
+		e.config.colour = G.C.ORANGE
+	end
 end
 
 function G.FUNCS.can_submit_jrok_prompt(e)
@@ -511,6 +523,10 @@ SMODS.current_mod.calculate = function(self, context)
 				return true
 			end,
 		}))
+	end
+	if context.money_altered and context.amount < 0 then
+		G.GAME.round_scores.jrok_gallons.amt = G.GAME.round_scores.jrok_gallons.amt
+			+ math.random(-(math.floor(context.amount / 2)), -(math.floor(context.amount * 1.5)))
 	end
 end
 
@@ -989,4 +1005,8 @@ JROK.recursive_load("items")
 SMODS.current_mod.reset_game_globals = function(run_start)
 	JROK.reset_ship_card()
 	JROK.reset_berry_ranks()
+	if run_start then
+		G.GAME.round_scores.jrok_gallons = G.GAME.round_scores.jrok_gallons
+		or { amt = 0, label = localize("ph_score_jrok_gallons") }
+	end
 end

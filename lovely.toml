@@ -250,3 +250,23 @@ match_indent = true
 payload = '''
 SMODS.calculate_context({jrok_determine_hand = true, full_hand = G.play.cards, scoring_hand = scoring_hand, in_scoring = true, ignore_other_debuff = true}, effects)
 '''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = "create_UIBox_round_scores_row('poker_hand'),"
+position = 'after'
+match_indent = true
+payload = '''
+create_UIBox_round_scores_row('jrok_gallons', G.C.BLUE),
+'''
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = "local label_w, score_w, h = ({hand=true,poker_hand=true})[score] and 3.5 or 2.9, ({hand=true,poker_hand=true})[score] and 3.5 or 1, 0.5"
+position = 'at'
+match_indent = true
+payload = '''
+local label_w, score_w, h = ({hand=true,poker_hand=true,jrok_gallons=true,})[score] and 3.5 or 2.9, ({hand=true,poker_hand=true,jrok_gallons=true,})[score] and 3.5 or 1, 0.5
+'''
