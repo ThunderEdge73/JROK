@@ -446,7 +446,7 @@ return {
 				name = "PERO",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult if all",
-					"joker slots are full",
+					"Joker slots are full",
 				},
 			},
 			j_jrok_butterfly = {
