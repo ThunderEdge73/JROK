@@ -34,7 +34,7 @@ SMODS.Joker({
 			local playhand = G.GAME.hands[context.scoring_name].played or 0
 			local should_reset = false
 			for k, v in pairs(G.GAME.hands) do
-				if k ~= context.scoring_name and v.played > playhand and v.visible then
+				if k ~= context.scoring_name and v.played >= playhand and v.visible then
 					should_reset = true
 					break
 				end
@@ -48,7 +48,7 @@ SMODS.Joker({
 			elseif should_reset then
 				SMODS.calculate_effect({
 					message = localize("k_reset"),
-				})
+				}, card)
 				card.ability.extra.mult_mod = 0
 			end
 
