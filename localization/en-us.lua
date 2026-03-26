@@ -457,6 +457,21 @@ return {
 					"is selected",
 				},
 			},
+			j_jrok_ghost_joker = {
+				name = "Poltergeist",
+				text = {
+					"Create a {C:spectral}Spectral{} card",
+					"when {C:attention}Blind{} is selected",
+					"{C:inactive}(Must have room)",
+				},
+			},
+			j_jrok_uniku = {
+				name = "Uniku",
+				text = {
+					"{C:attention}Retrigger{} all scored",
+					"{C:attention}7s{} #1# time#<s>1#",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
