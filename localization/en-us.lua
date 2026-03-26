@@ -442,6 +442,21 @@ return {
 					"{C:inactive}(#2#)",
 				},
 			},
+			j_jrok_pero = {
+				name = "PERO",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult if all",
+					"joker slots are full",
+				},
+			},
+			j_jrok_butterfly = {
+				name = "Butterfly Memory",
+				text = {
+					"Creates a random {C:dark_edition}Negative{}",
+					"{C:spectral}Spectral{} card when {C:attention}Boss Blind{}",
+					"is selected",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
