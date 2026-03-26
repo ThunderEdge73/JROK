@@ -7,6 +7,11 @@ SMODS.Joker({
 	cost = 10,
 	discovered = true,
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = {
+			set = "Other",
+			key = "perishable",
+			vars = { G.GAME.perishable_rounds or 5, G.GAME.perishable_rounds or 5 },
+		}
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_foil
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
