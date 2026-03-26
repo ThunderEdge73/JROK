@@ -522,21 +522,37 @@ return {
 				},
 			},
 			j_jrok_starPlatinum = {
-				name = 'Star Platinum',
+				name = "Star Platinum",
 				text = {
 					"This Joker gains {C:mult}+#1#{} Mult",
 					"per {C:attention}consecutive hand{} played that",
 					"is your most played {C:attention}poker hand",
 					"{C:inactive}(Currently {C:mult}+#2#{} {C:inactive}Mult{C:inactive})",
-				}
+				},
 			},
 			j_jrok_crazyDiamond = {
-				name = 'Crazy Diamond',
+				name = "Crazy Diamond",
 				text = {
 					"Create a {C:attention}copy{} of any",
 					"{C:attention}destroyed cards{} and",
 					"add them to hand",
-				}
+				},
+			},
+			j_jrok_fountain = {
+				name = "Fountain",
+				text = {
+					"Played cards have a",
+					"{C:green}#1# in (rank){} chance to",
+					"earn {C:money}$#2#{} when {C:attention}scored{}",
+				},
+			},
+			j_jrok_jokerton = {
+				name = "Jokerton",
+				text = {
+					"Every {C:attention}#1# {C:inactive}[#2#] {C:hearts}Hearts{} cards discarded,",
+					"enhance {C:attention}first card{} of next",
+					"hand played to a {C:attention}Steel Card{}",
+				},
 			},
 		},
 		Other = {
@@ -583,6 +599,7 @@ return {
 			ph_jrok_dead_ringer_saved = "Feigned Death",
 			k_jrok_destroyed_ex = "Destroyed!",
 			ph_score_jrok_gallons = "Gallons Of Water Used",
+			k_jrok_steel = "Steel!",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
@@ -599,7 +616,7 @@ return {
 				"to click me and send me",
 				"your feedback, any",
 				"feedback is valuable!",
-			}
-		}
+			},
+		},
 	},
 }
