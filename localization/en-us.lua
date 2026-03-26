@@ -423,8 +423,35 @@ return {
 					{
 						"{C:inactive,s:0.8}How the hell did I get here?",
 					},
-				}
-			}
+				},
+			},
+			j_jrok_fireball = {
+				name = "Fireball",
+				text = { "{X:mult,C:white}X#1#{} Mult next hand" },
+			},
+			j_jrok_fireball_infinity = {
+				name = "Fireball",
+				text = { "{X:legendary,C:white,E:1}X#1#{} Mult" },
+			},
+			j_jrok_dead_ringer = {
+				name = "Dead Ringer",
+				text = {
+					"Prevents death against {C:attention}Small Blinds",
+					"{X:mult,C:white}X#1#{} Mult if this Joker prevented",
+					"death this {C:attention}ante",
+					"{C:inactive}(#2#)",
+				},
+			},
+		},
+		Other = {
+			o_jrok_ortalab_dead_ringer = {
+				name = "Ortalab Blinds",
+				text = {
+					"{C:attention}Fold{}, {C:attention}Check{}, and {C:attention}Bet{} also",
+					"count as Small Blinds",
+					"for this Joker's purposes",
+				},
+			},
 		},
 	},
 	misc = {
@@ -458,6 +485,9 @@ return {
 			jrok_inactive = "Inactive",
 			jrok_disabled = "Disabled!",
 			jrok_nom = "Nom!",
+			k_jrok_spell = "Spell",
+			k_jrok_inactive = "Inactive...",
+			ph_jrok_dead_ringer_saved = "Feigned Death",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",

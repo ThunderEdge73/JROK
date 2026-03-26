@@ -936,9 +936,10 @@ end
 
 function create_jrok_badge(_string, scaling)
 	local strings = JROK.split_mod_badge_text(_string)
-	for _ = 1, 15 do
+	for _ = 1, 14 do
 		strings[#strings + 1] = "JROK"
 	end
+	table.insert(strings, 1, "JROK")
 	scaling = scaling or 0.9
 	return {
 		n = G.UIT.R,
