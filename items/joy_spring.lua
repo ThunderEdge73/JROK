@@ -47,6 +47,9 @@ SMODS.Joker({
 	atlas = "stolen",
 	pos = { x = 9, y = 6 },
 	rarity = 2,
+	in_pool = function(self, args)
+        return false
+    end,
 	stolen_from = "JoyousSpring",
 	discovered = true,
 	blueprint_compat = false,

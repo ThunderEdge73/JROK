@@ -564,6 +564,15 @@ return {
 					"{C:inactive}(Currently in {C:attention}column #2#{}{C:inactive})",
 				},
 			},
+			j_jrok_trash_bin = {
+				name = "Trash Bin",
+				text = {
+					"{C:mult}+#1#{} Mult for each",
+					"card discarded or previously",
+					"played this round",
+					"{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
