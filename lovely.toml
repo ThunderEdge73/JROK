@@ -270,3 +270,18 @@ match_indent = true
 payload = '''
 local label_w, score_w, h = ({hand=true,poker_hand=true,jrok_gallons=true,})[score] and 3.5 or 2.9, ({hand=true,poker_hand=true,jrok_gallons=true,})[score] and 3.5 or 1, 0.5
 '''
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = "spot.config.object = Jimbo"
+position = 'after'
+match_indent = true
+payload = '''
+Jimbo.states.collide.can = true
+Jimbo.states.click.can = true
+function Jimbo:click()
+	Card_Character.click(self)
+	G.FUNCS.jrok_feedback_prompt()
+end
+'''

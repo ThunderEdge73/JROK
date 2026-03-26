@@ -209,7 +209,7 @@ function G.FUNCS.jrok_start_run_prompt(e)
 	G.FUNCS.overlay_menu({
 		definition = uidef,
 		config = {
-			no_esc = G.STATE == G.STATES.GAME_OVER,
+			no_esc = G.STAGE == G.STAGES.RUN,
 		},
 	})
 end
@@ -366,7 +366,6 @@ function G.FUNCS.jrok_menu_prompt(e)
 									colour = G.C.ORANGE,
 									button = "exit_overlay_menu",
 									shadow = true,
-									func = "jrok_can_exit",
 									focus_args = { nav = "wide", button = "b" },
 								},
 								nodes = {
@@ -395,9 +394,7 @@ function G.FUNCS.jrok_menu_prompt(e)
 	}
 	G.FUNCS.overlay_menu({
 		definition = uidef,
-		config = {
-			no_esc = G.STATE == G.STATES.GAME_OVER,
-		},
+		config = {},
 	})
 	G.E_MANAGER:add_event(Event({
 		blocking = false,
@@ -412,7 +409,7 @@ function G.FUNCS.jrok_menu_prompt(e)
 end
 
 function G.FUNCS.jrok_can_exit(e)
-	if G.STATE == G.STATES.GAME_OVER then
+	if G.STAGE == G.STAGES.RUN then
 		e.config.button = nil
 		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
 	else
@@ -1007,6 +1004,201 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 	JROK.reset_berry_ranks()
 	if run_start then
 		G.GAME.round_scores.jrok_gallons = G.GAME.round_scores.jrok_gallons
-		or { amt = 0, label = localize("ph_score_jrok_gallons") }
+			or { amt = 0, label = localize("ph_score_jrok_gallons") }
+	end
+end
+
+SMODS.JimboQuip({
+	key = "feedback",
+	extra = {
+		center = "j_jrok_thunderedge",
+		times = 10,
+	},
+	filter = function(self, quip_type)
+		return true, { weight = 1e308 }
+	end,
+})
+
+function G.FUNCS.jrok_feedback_prompt(e)
+	JROK.feedback_prompt = ""
+	G.SETTINGS.paused = true
+	local icon = SMODS.create_sprite(0, 0, 1, 1, "jrok_modicon", { x = 0, y = 0 })
+	local uidef = {
+		n = G.UIT.ROOT,
+		config = {
+			align = "cm",
+			minw = G.ROOM.T.w * 5,
+			minh = G.ROOM.T.h * 5,
+			padding = 0.1,
+			r = 0.1,
+			colour = { G.C.GREY[1], G.C.GREY[2], G.C.GREY[3], 0.7 },
+		},
+		nodes = {
+			{
+				n = G.UIT.R,
+				config = { r = 0.1, colour = G.C.JOKER_GREY, padding = 0.05, align = "cm" },
+				nodes = {
+					{
+						n = G.UIT.C,
+						config = { colour = G.C.L_BLACK, r = 0.1, padding = 0.2, align = "cm" },
+						nodes = {
+							{
+								n = G.UIT.R,
+								config = { align = "cm" },
+								nodes = {
+									{
+										n = G.UIT.C,
+										config = { align = "cm", minh = 4 },
+										nodes = {
+											{
+												n = G.UIT.R,
+												config = { align = "cm", padding = 0.1 },
+												nodes = {
+													{
+														n = G.UIT.O,
+														config = {
+															object = icon,
+														},
+													},
+													{
+														n = G.UIT.B,
+														config = { w = 0.1, h = 0.1 },
+													},
+													{
+														n = G.UIT.T,
+														config = {
+															text = localize("k_jrok"),
+															scale = 0.8,
+															colour = G.C.UI.TEXT_LIGHT,
+														},
+													},
+												},
+											},
+											{
+												n = G.UIT.R,
+												config = { align = "cm", padding = 0.1 },
+												nodes = {
+													{
+														n = G.UIT.T,
+														config = {
+															text = localize("k_jrok_prompt2"),
+															scale = 0.7,
+															colour = G.C.UI.TEXT_LIGHT,
+														},
+													},
+												},
+											},
+											{
+												n = G.UIT.R,
+												config = { minh = 0.2 },
+											},
+											{
+												n = G.UIT.R,
+												config = { padding = 0.1, align = "cm" },
+												nodes = {
+													create_text_input({
+														prompt_text = localize("k_jrok_text_prompt3"),
+														ref_table = JROK,
+														ref_value = "menu_prompt",
+														max_length = 500,
+														w = 11,
+														extended_corpus = true,
+													}),
+													{
+														n = G.UIT.C,
+														config = {
+															button = "notify_then_setup_run",
+															ref_element = e,
+															id = G.STATE == G.STATES.GAME_OVER and "from_game_over"
+																or "from_game_won",
+															colour = G.C.BLUE,
+															minh = 0.6,
+															minw = 1.8,
+															padding = 0.05,
+															r = 0.1,
+															hover = true,
+															shadow = true,
+															align = "cm",
+															func = "can_submit_jrok_feedback",
+														},
+														nodes = {
+															{
+																n = G.UIT.T,
+																config = {
+																	text = localize("k_jrok_submit"),
+																	scale = 0.4,
+																	colour = G.C.UI.TEXT_LIGHT,
+																},
+															},
+														},
+													},
+												},
+											},
+										},
+									},
+								},
+							},
+							{
+								n = G.UIT.R,
+								config = {
+									align = "cm",
+									minw = 2.5,
+									padding = 0.1,
+									r = 0.1,
+									hover = true,
+									colour = G.C.ORANGE,
+									button = "go_to_menu",
+									shadow = true,
+									focus_args = { nav = "wide", button = "b" },
+								},
+								nodes = {
+									{
+										n = G.UIT.R,
+										config = { align = "cm", padding = 0, no_fill = true },
+										nodes = {
+											{
+												n = G.UIT.T,
+												config = {
+													text = localize("b_main_menu"),
+													scale = 0.5,
+													colour = G.C.UI.TEXT_LIGHT,
+													shadow = true,
+												},
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
+	G.FUNCS.overlay_menu({
+		definition = uidef,
+		config = {
+			no_esc = true,
+		},
+	})
+	G.E_MANAGER:add_event(Event({
+		blocking = false,
+		blockable = false,
+		timer = "REAL",
+		trigger = "immediate",
+		func = function()
+			G.OVERLAY_MENU:recalculate()
+			return true
+		end,
+	}))
+end
+
+function G.FUNCS.can_submit_jrok_feedback(e)
+	if JROK.menu_prompt ~= "" then
+		e.config.colour = G.C.BLUE
+		e.config.button = "notify_then_setup_run"
+	else
+		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+		e.config.button = nil
 	end
 end

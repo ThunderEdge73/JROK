@@ -562,7 +562,9 @@ return {
 			k_jrok_prompt2 = "How may I help you?",
 			k_jrok_text_prompt = "What's your idea?",
 			k_jrok_text_prompt2 = "Ask anything",
+			k_jrok_text_prompt3 = "Let me know what's on your mind",
 			k_jrok_start = "Start Run",
+			k_jrok_submit = "Submit",
 			k_jrok_arrow = ">",
 			k_jrok = "JROK",
 			k_jrok_powered = "(Powered",
@@ -590,5 +592,14 @@ return {
 		labels = {
 			jrok_hallucinated = "Hallucinated",
 		},
+		quips = {
+			jrok_feedback = {
+				"Do you have any feedback",
+				"for {C:attention}JROK AI{}? Feel free",
+				"to click me and send me",
+				"your feedback, any",
+				"feedback is valuable!",
+			}
+		}
 	},
 }
