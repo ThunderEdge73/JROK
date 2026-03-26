@@ -573,6 +573,21 @@ return {
 					"{C:inactive}(Currently{} {C:mult}+#2#{} {C:inactive}Mult){}",
 				},
 			},
+			j_jrok_futuristic = {
+				name = "Futuristic Joker",
+				text = {
+					"Each {C:attention}played card{} gives {X:red,C:white}X#1#{} Mult",
+					"if {C:attention}played hand{} contains a {C:attention}rank{}",
+					"one {C:attention}higher{} or {C:attention}lower{}",
+				},
+			},
+			j_jrok_gratification = {
+				name = "Instant Gratification",
+				text = {
+					"Earn {C:money}$#1#{} when you",
+					"use a {C:red}discard{}",
+				}
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
@@ -619,6 +634,7 @@ return {
 			k_jrok_destroyed_ex = "Destroyed!",
 			ph_score_jrok_gallons = "Gallons Of Water Used",
 			k_jrok_steel = "Steel!",
+			jrok_rank = 'certain rank',
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
