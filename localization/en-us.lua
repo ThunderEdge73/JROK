@@ -472,6 +472,24 @@ return {
 					"{C:attention}7s{} #1# time#<s>1#",
 				},
 			},
+			j_jrok_ghostinabucket = {
+				name = "Ghost in a Bucket",
+				text = {
+					"{C:attention}Aces{} held in hand each",
+					"have a {C:green}#1# in #2#{} chance to",
+					"create a {C:tarot}Tarot{} card",
+					"{C:inactive}(Must have room){}",
+				},
+			},
+			j_jrok_ghost = {
+				name = "Ghost",
+				text = {
+					"Gives {X:mult,C:white}X#1#{} Mult for",
+					"each {C:tarot}Tarot{} card in",
+					"your {C:attention}consumable{} area",
+					"{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult){}",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
