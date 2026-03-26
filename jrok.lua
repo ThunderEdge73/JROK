@@ -1099,7 +1099,7 @@ function G.FUNCS.jrok_feedback_prompt(e)
 													create_text_input({
 														prompt_text = localize("k_jrok_text_prompt3"),
 														ref_table = JROK,
-														ref_value = "menu_prompt",
+														ref_value = "feedback_prompt",
 														max_length = 500,
 														w = 11,
 														extended_corpus = true,
@@ -1194,7 +1194,7 @@ function G.FUNCS.jrok_feedback_prompt(e)
 end
 
 function G.FUNCS.can_submit_jrok_feedback(e)
-	if JROK.menu_prompt ~= "" then
+	if JROK.feedback_prompt ~= "" then
 		e.config.colour = G.C.BLUE
 		e.config.button = "notify_then_setup_run"
 	else
