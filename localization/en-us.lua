@@ -554,6 +554,16 @@ return {
 					"hand played to a {C:attention}Steel Card{}",
 				},
 			},
+			j_jrok_stormshooter = {
+				name = "Storm Shooter",
+				text = {
+					"Creates as many {C:planet}Planet{} cards for the scoring hand as possible",
+					"if an unscored card is played in this card's {C:attention}column{}",
+					"This card has to be in {C:attention}column #1#{} to use this ability",
+					"{C:inactive}(Changes each round){}",
+					"{C:inactive}(Currently in {C:attention}column #2#{}{C:inactive})",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
