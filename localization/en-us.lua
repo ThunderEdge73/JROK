@@ -521,6 +521,23 @@ return {
 					"once, and scored {C:attention}#3#s{} twice",
 				},
 			},
+			j_jrok_starPlatinum = {
+				name = 'Star Platinum',
+				text = {
+					"This Joker gains {C:mult}+#1#{} Mult",
+					"per {C:attention}consecutive hand{} played that",
+					"is your most played {C:attention}poker hand",
+					"{C:inactive}(Currently {C:mult}+#2#{} {C:inactive}Mult{C:inactive})",
+				}
+			},
+			j_jrok_crazyDiamond = {
+				name = 'Crazy Diamond',
+				text = {
+					"Create a {C:attention}copy{} of any",
+					"{C:attention}destroyed cards{} and",
+					"add them to hand",
+				}
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
