@@ -7,7 +7,6 @@ SMODS.Joker({
 	},
 	atlas = "stolen",
 	cost = 8,
-	unlocked = false,
 	discovered = false,
 	blueprint_compat = false,
 	eternal_compat = true,
