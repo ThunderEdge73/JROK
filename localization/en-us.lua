@@ -594,7 +594,7 @@ return {
 					"If first hand of round",
 					"is {C:attention}not{} your most played",
 					"hand, {C:attention}upgrade{} it and {C:red}destroy",
-					"{C:attention}#1#{} played cards",
+					"random {C:attention}#1#{} played cards",
 				},
 			},
 			j_jrok_7_ball = {
