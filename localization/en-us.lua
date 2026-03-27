@@ -606,6 +606,22 @@ return {
 					"{C:inactive}(Must have room)",
 				},
 			},
+			j_jrok_eviloops = {
+				name = "{C:red}Evil{} Oops All Sixes",
+				text = {
+					"Halves all listed probabilities",
+					"{C:green}(ex: 1 in 3 -> 1 in 6){}",
+				},
+			},
+			j_jrok_polychromeToTheRight = {
+				name = "Polychrome to the Right",
+				text = {
+					"Always Polychrome",
+					"{C:mult}X#1#{} Mult if this",
+					"Joker is the",
+					"rightmost Joker",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
