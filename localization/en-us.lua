@@ -586,7 +586,23 @@ return {
 				text = {
 					"Earn {C:money}$#1#{} when you",
 					"use a {C:red}discard{}",
-				}
+				},
+			},
+			j_jrok_solar = {
+				name = "Solar Flare",
+				text = {
+					"If first hand of round {C:attention}not{} your most played,",
+					"{C:attention}upgrade{} it and {C:red}destroy {C:attention}#1#{} played cards",
+				},
+			},
+			j_jrok_7_ball = {
+				name = "7 Ball",
+				text = {
+					"{C:green}#1# in #2#{} chance for each",
+					"played {C:attention}7{} to create a",
+					"{C:spectral}Spectral{} card when scored",
+					"{C:inactive}(Must have room)",
+				},
 			},
 		},
 		Other = {
@@ -634,7 +650,7 @@ return {
 			k_jrok_destroyed_ex = "Destroyed!",
 			ph_score_jrok_gallons = "Gallons Of Water Used",
 			k_jrok_steel = "Steel!",
-			jrok_rank = 'certain rank',
+			jrok_rank = "certain rank",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
