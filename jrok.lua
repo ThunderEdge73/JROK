@@ -502,13 +502,42 @@ end
 
 SMODS.current_mod.calculate = function(self, context)
 	if context.create_shop_card then
-		local item = JROK.generate_joker(true)
-		if item then
-			return {
-				shop_create_flags = {
-					key = item,
-				},
-			}
+		if context.set == "Joker" then
+			local item = JROK.generate_joker(true)
+			if item then
+				return {
+					shop_create_flags = {
+						key = item,
+					},
+				}
+			end
+		elseif context.set == "Tarot" then
+			local item = JROK.generate_tarot(true)
+			if item then
+				return {
+					shop_create_flags = {
+						key = item,
+					},
+				}
+			end
+		elseif context.set == "Spectral" then
+			local item = JROK.generate_spectral(true)
+			if item then
+				return {
+					shop_create_flags = {
+						key = item,
+					},
+				}
+			end
+		elseif context.set == "Planet" then
+			local item = JROK.generate_planet(true)
+			if item then
+				return {
+					shop_create_flags = {
+						key = item,
+					},
+				}
+			end
 		end
 	end
 	if context.setting_blind and JROK.naneinf() and context.blind.key == "bl_final_vessel" then
@@ -642,9 +671,9 @@ function JROK.generate_joker(shop)
 	end
 end
 
-function JROK.generate_tarot()
+function JROK.generate_tarot(shop)
 	local pool = {}
-	if JROK.legendary() then
+	if JROK.legendary() and not shop then
 		pool[#pool + 1] = "c_soul"
 	end
 	if JROK.lucky() then
@@ -655,7 +684,7 @@ function JROK.generate_tarot()
 	end
 end
 
-function JROK.generate_planet()
+function JROK.generate_planet(shop)
 	local pool = {}
 	-- TODO
 	if next(pool) then
@@ -663,9 +692,9 @@ function JROK.generate_planet()
 	end
 end
 
-function JROK.generate_spectral()
+function JROK.generate_spectral(shop)
 	local pool = {}
-	if JROK.legendary() then
+	if JROK.legendary() and not shop then
 		pool[#pool + 1] = "c_soul"
 	end
 	if next(pool) then
@@ -728,7 +757,7 @@ function JROK.photochad()
 end
 
 function JROK.naneinf()
-	return G.GAME.jrok_prompt:find("baron") or G.GAME.jrok_prompt:find("mime") or G.GAME.jrok_prompt:find("inf")
+	return G.GAME.jrok_prompt:find("baron") or G.GAME.jrok_prompt:find("mime") or G.GAME.jrok_prompt:find("infin")
 end
 
 function JROK.lucky()
@@ -738,9 +767,7 @@ function JROK.lucky()
 		"fortune",
 		"luck",
 		"oops",
-		"blood",
 		"park",
-		"hallucin",
 		"business",
 		"ball",
 		"chance",

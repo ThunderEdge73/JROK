@@ -12,30 +12,31 @@ SMODS.Joker({
 			}
 		end
 	end,
-    stolen_from = "Typ0's Random Jokers",
-    in_pool = function (self, args)
-        return false
-    end,
+	stolen_from = "Typ0's Random Jokers",
+	in_pool = function(self, args)
+		return false
+	end,
 })
 
 SMODS.Joker({
 	key = "polychromeToTheRight",
-    stolen_from = "Typ0's Random Jokers",
-    in_pool = function (self, args)
-        return false
-    end,
+	stolen_from = "Typ0's Random Jokers",
+	in_pool = function(self, args)
+		return false
+	end,
 	draw = function(self, card, layer)
 		if card.config.center.discovered or card.bypass_discovery_center then
 			card.children.center:draw_shader("polychrome", nil, card.ARGS.send_to_shader)
 		end
 	end,
-    loc_vars = function (self, info_queue, card)
-        return {
-            vars = {
-                card.ability.extra.x_mult,
-            }
-        }
-    end,
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_polychrome
+		return {
+			vars = {
+				card.ability.extra.x_mult,
+			},
+		}
+	end,
 	atlas = "stolen",
 	pos = { x = 6, y = 7 },
 	rarity = 2,

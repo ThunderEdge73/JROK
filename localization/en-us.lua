@@ -617,10 +617,10 @@ return {
 			j_jrok_polychromeToTheRight = {
 				name = "Polychrome to the Right",
 				text = {
-					"Always Polychrome",
+					"Always {C:dark_edition}Polychrome",
 					"{X:mult,C:white}X#1#{} Mult if this",
 					"Joker is the",
-					"rightmost Joker",
+					"rightmost {C:attention}Joker",
 				},
 			},
 		},
