@@ -609,15 +609,16 @@ return {
 			j_jrok_eviloops = {
 				name = "{C:red}Evil{} Oops All Sixes",
 				text = {
-					"Halves all listed probabilities",
-					"{C:green}(ex: 1 in 3 -> 1 in 6){}",
+					"Halves all {C:attention}listed{}",
+					"{C:green,E:1}probabilities",
+					"{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}1 in 6{C:inactive}){}",
 				},
 			},
 			j_jrok_polychromeToTheRight = {
 				name = "Polychrome to the Right",
 				text = {
 					"Always Polychrome",
-					"{C:mult}X#1#{} Mult if this",
+					"{X:mult,C:white}X#1#{} Mult if this",
 					"Joker is the",
 					"rightmost Joker",
 				},
