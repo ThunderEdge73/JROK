@@ -673,6 +673,9 @@ function JROK.generate_joker(shop)
 			end
 		end
 	end
+	if JROK.stolen() then
+		pool[#pool + 1] = "j_burglar"
+	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
 	end
@@ -719,6 +722,9 @@ function JROK.generate_blind(seed)
 	end
 	if JROK.lucky() then
 		pool[#pool + 1] = "bl_wheel"
+	end
+	if JROK.stolen() then
+		pool[#pool + 1] = "bl_mouth"
 	end
 	if next(pool) then
 		return pseudorandom_element(pool, seed or "jrok_prompt")
@@ -788,6 +794,17 @@ end
 
 function JROK.plagiarized()
 	return G.GAME.jrok_prompt:find("vanilla") or G.GAME.jrok_prompt:find("mod") or G.GAME.jrok_prompt:find("content")
+end
+
+function JROK.drunk()
+	return G.GAME.jrok_prompt:find("perkeo")
+end
+
+function JROK.stolen()
+	return G.GAME.jrok_prompt:find("steal")
+		or G.GAME.jrok_prompt:find("stole")
+		or G.GAME.jrok_prompt:find("copy")
+		or G.GAME.jrok_prompt:find("plagiar")
 end
 
 SMODS.Joker:take_ownership("gros_michel", {
@@ -1299,10 +1316,6 @@ function G.FUNCS.can_submit_jrok_feedback(e)
 end
 
 --#region Drunk stuff
-
-function JROK.drunk()
-	return G.GAME.jrok_prompt:find("perkeo")
-end
 
 SMODS.Joker:take_ownership("perkeo", {
 	calculate = function(self, card, context)
