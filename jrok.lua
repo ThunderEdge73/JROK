@@ -1437,6 +1437,12 @@ SMODS.Consumable({
 						end,
 					}))
 					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						timer = "REAL",
+						pause_force = true,
+						delay = 1.5,
+					}))
+					G.E_MANAGER:add_event(Event({
 						trigger = "ease",
 						ref_table = JROK,
 						ref_value = "blackout",
