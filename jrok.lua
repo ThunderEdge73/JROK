@@ -681,8 +681,84 @@ function JROK.generate_joker(shop)
 		pool[#pool + 1] = "j_obelisk"
 		pool[#pool + 1] = "j_jolly"
 	end
+	if JROK.summarize() then
+		pool[#pool + 1] = "j_diet_cola"
+		pool[#pool + 1] = "j_throwback"
+	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
+	end
+end
+
+local skip_hook = G.FUNCS.skip_blind
+function G.FUNCS.skip_blind(e)
+	if JROK.summarize() and pseudorandom("summarize", 1, 2) == 1 then
+		stop_use()
+		G.CONTROLLER.locks.skip_blind = true
+		G.E_MANAGER:add_event(Event({
+			no_delete = true,
+			trigger = "after",
+			blocking = false,
+			blockable = false,
+			delay = 2.5,
+			timer = "TOTAL",
+			func = function()
+				G.CONTROLLER.locks.skip_blind = nil
+				return true
+			end,
+		}))
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.4,
+			func = function()
+				attention_text({
+					text = localize("k_nope_ex"),
+					scale = 1.3,
+					hold = 1.4,
+					major = G.play,
+					backdrop_colour = G.C.SECONDARY_SET.Tarot,
+					align = (
+						G.STATE == G.STATES.TAROT_PACK
+						or G.STATE == G.STATES.SPECTRAL_PACK
+						or G.STATE == G.STATES.SMODS_BOOSTER_OPENED
+					)
+							and "tm"
+						or "cm",
+					offset = {
+						x = 0,
+						y = (
+							G.STATE == G.STATES.TAROT_PACK
+							or G.STATE == G.STATES.SPECTRAL_PACK
+							or G.STATE == G.STATES.SMODS_BOOSTER_OPENED
+						)
+								and -0.2
+							or 0,
+					},
+					silent = true,
+				})
+				G.E_MANAGER:add_event(Event({
+					trigger = "after",
+					delay = 0.06 * G.SETTINGS.GAMESPEED,
+					blockable = false,
+					blocking = false,
+					func = function()
+						play_sound("tarot2", 0.76, 0.4)
+						return true
+					end,
+				}))
+				play_sound("tarot2", 1, 0.4)
+				return true
+			end,
+		}))
+		local skipped, skip_to =
+			G.GAME.blind_on_deck or "Small",
+			G.GAME.blind_on_deck == "Small" and "Big" or G.GAME.blind_on_deck == "Big" and "Boss" or "Boss"
+		G.GAME.round_resets.blind_states[skipped] = "Skipped"
+		G.GAME.round_resets.blind_states[skip_to] = "Select"
+		G.GAME.blind_on_deck = skip_to
+		play_sound("generic1")
+	else
+		return skip_hook(e)
 	end
 end
 
@@ -814,6 +890,10 @@ end
 
 function JROK.cryptid()
 	return G.GAME.jrok_prompt:find("cryptid") or G.GAME.jrok_prompt:find("unbalanced")
+end
+
+function JROK.summarize()
+	return G.GAME.jrok_prompt:find("summar") or G.GAME.jrok_prompt:find("quick") or G.GAME.jrok_prompt:find("speed")
 end
 
 SMODS.Joker:take_ownership("gros_michel", {
