@@ -640,11 +640,12 @@ return {
 				text = {
 					"{X:mult,C:white}X#1#{} Mult while held in",
 					"consumable slots",
-					"{C:red,E:1}Lose the run{} after",
-					"using {C:attention}Alcohol 10 {C:inactive}(#2#){} times",
-				}
-			}
-		}
+					"After using {C:attention}Alcohol",
+					"{C:attention}10 {C:inactive}(#2#){} times,",
+					"{C:red,E:1}lose the run{}",
+				},
+			},
+		},
 	},
 	misc = {
 		poker_hands = {
