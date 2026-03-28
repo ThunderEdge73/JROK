@@ -666,6 +666,13 @@ function JROK.generate_joker(shop)
 		pool[#pool + 1] = "j_business"
 		pool[#pool + 1] = "j_8_ball"
 	end
+	if JROK.plagiarized() then
+		for key, center in pairs(G.P_CENTERS) do
+			if center.set == "Joker" and center.original_mod == JROK_MOD then
+				pool[#pool + 1] = key
+			end
+		end
+	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
 	end
@@ -779,7 +786,7 @@ function JROK.lucky()
 	return false
 end
 
-function JROK.theft()
+function JROK.plagiarized()
 	return G.GAME.jrok_prompt:find("vanilla") or G.GAME.jrok_prompt:find("mod") or G.GAME.jrok_prompt:find("content")
 end
 
@@ -1032,6 +1039,19 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 	if run_start then
 		G.GAME.round_scores.jrok_gallons = G.GAME.round_scores.jrok_gallons
 			or { amt = 0, label = localize("ph_score_jrok_gallons") }
+		if JROK.drunk() then
+			G.GAME.jrok_drunk = G.GAME.jrok_drunk or 0
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					SMODS.add_card({
+						key = "j_perkeo",
+						stickers = { "eternal" },
+						force_stickers = true,
+					})
+					return true
+				end,
+			}))
+		end
 	end
 end
 
@@ -1277,3 +1297,186 @@ function G.FUNCS.can_submit_jrok_feedback(e)
 		e.config.button = nil
 	end
 end
+
+--#region Drunk stuff
+
+function JROK.drunk()
+	return G.GAME.jrok_prompt:find("perkeo")
+end
+
+SMODS.Joker:take_ownership("perkeo", {
+	calculate = function(self, card, context)
+		if context.ending_shop and G.consumeables.cards[1] then
+			if JROK.drunk() and pseudorandom("drunk", 1, 2) == 1 then
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						SMODS.add_card({
+							key = "c_jrok_alcohol",
+							edition = "e_negative",
+							stickers = { "eternal" },
+							force_stickers = true,
+						})
+						return true
+					end,
+				}))
+			else
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						local card_to_copy, _ = pseudorandom_element(G.consumeables.cards, "vremade_perkeo")
+						local copied_card = copy_card(card_to_copy)
+						copied_card:set_edition("e_negative", true)
+						copied_card:add_to_deck()
+						G.consumeables:emplace(copied_card)
+						return true
+					end,
+				}))
+			end
+			return { message = localize("k_duplicated_ex") }
+		end
+	end,
+}, true)
+
+SMODS.ScreenShader({
+	key = "drunk",
+	path = "drunk.fs",
+	send_vars = function(self)
+		return {
+			progress = math.pow((G.GAME.jrok_drunk or 0) / 10, 2),
+			time = G.TIMERS.REAL,
+		}
+	end,
+	should_apply = function(self)
+		return (G.GAME.jrok_drunk or 0) > 0
+	end,
+})
+
+SMODS.ScreenShader({
+	key = "blackout",
+	path = "blackout.fs",
+	send_vars = function(self)
+		return {
+			progress = JROK.blackout,
+		}
+	end,
+	should_apply = function(self)
+		return JROK.blackout > 0
+	end,
+})
+
+SMODS.Atlas({
+	key = "alcohol",
+	path = "alcohol.png",
+	px = 71,
+	py = 95,
+})
+
+JROK.drunk_limit = 10
+JROK.blackout = 0
+
+SMODS.Consumable({
+	key = "alcohol",
+	set = "Tarot",
+	atlas = "alcohol",
+	pos = { x = 0, y = 0 },
+	config = { extra = { xmult = 0.8 } },
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				card.ability.extra.xmult,
+				JROK.drunk_limit - ((G.GAME or {}).jrok_drunk or 0),
+			},
+		}
+	end,
+	in_pool = function(self, args)
+		return false
+	end,
+	calculate = function(self, card, context)
+		if context.final_scoring_step then
+			return {
+				xmult = card.ability.extra.xmult,
+			}
+		end
+	end,
+	use = function(self, card, area, copier)
+		G.GAME.jrok_drunk = G.GAME.jrok_drunk or 0
+		local final = G.GAME.jrok_drunk + 1
+		G.E_MANAGER:add_event(Event({
+			trigger = "after",
+			delay = 0.4,
+			func = function()
+				play_sound("timpani")
+				card:juice_up(0.3, 0.5)
+				G.E_MANAGER:add_event(Event({
+					trigger = "ease",
+					ref_table = G.GAME,
+					ref_value = "jrok_drunk",
+					ease_to = final,
+					timer = "REAL",
+					delay = 0.6,
+					type = "inoutquad",
+				}))
+				if final >= JROK.drunk_limit then
+					G.E_MANAGER:add_event(Event({
+						trigger = "ease",
+						ref_table = JROK,
+						ref_value = "blackout",
+						pause_force = true,
+						ease_to = 1,
+						delay = 0.5,
+						timer = "REAL",
+						type = "inoutquad",
+					}))
+					G.E_MANAGER:add_event(Event({
+						trigger = "after",
+						timer = "REAL",
+						pause_force = true,
+						delay = 3,
+						func = function()
+							JROK.lose()
+							return true
+						end,
+					}))
+					G.E_MANAGER:add_event(Event({
+						trigger = "ease",
+						ref_table = JROK,
+						ref_value = "blackout",
+						ease_to = 0,
+						pause_force = true,
+						timer = "REAL",
+						delay = 0.5,
+						blocking = false,
+						type = "inoutquad",
+					}))
+					G.E_MANAGER:add_event(Event({
+						trigger = "ease",
+						ref_table = G.GAME,
+						ref_value = "jrok_drunk",
+						ease_to = 0,
+						timer = "REAL",
+						pause_force = true,
+						delay = 0.5,
+						type = "inoutquad",
+					}))
+				end
+				return true
+			end,
+		}))
+		delay(0.3)
+	end,
+	can_use = function(self, card)
+		return true
+	end,
+	select_card = "consumeables",
+})
+
+function JROK.lose()
+	G.STATE = G.STATES.GAME_OVER
+	if not G.GAME.won and not G.GAME.seeded and not G.GAME.challenge then
+		G.PROFILES[G.SETTINGS.profile].high_scores.current_streak.amt = 0
+	end
+	G:save_settings()
+	G.FILE_HANDLER.force = true
+	G.STATE_COMPLETE = false
+end
+
+--#endregion

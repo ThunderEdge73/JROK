@@ -634,6 +634,17 @@ return {
 				},
 			},
 		},
+		Tarot = {
+			c_jrok_alcohol = {
+				name = "Alcohol",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult while held in",
+					"consumable slots",
+					"{C:red,E:1}Lose the run{} after",
+					"using {C:attention}Alcohol 10 {C:inactive}(#2#){} times",
+				}
+			}
+		}
 	},
 	misc = {
 		poker_hands = {
