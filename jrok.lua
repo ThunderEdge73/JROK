@@ -504,10 +504,15 @@ SMODS.current_mod.calculate = function(self, context)
 	if context.create_shop_card then
 		if context.set == "Joker" then
 			local item = JROK.generate_joker(true)
+			local edition = nil
+			if JROK.plagiarized() and pseudorandom("hallucination", 1, 4) == 1 then
+				edition = "e_jrok_hallucinated"
+			end
 			if item then
 				return {
 					shop_create_flags = {
 						key = item,
+						edition = edition,
 					},
 				}
 			end
@@ -894,6 +899,10 @@ end
 
 function JROK.summarize()
 	return G.GAME.jrok_prompt:find("summar") or G.GAME.jrok_prompt:find("quick") or G.GAME.jrok_prompt:find("speed")
+end
+
+function JROK.nope()
+	return G.GAME.jrok_prompt:find("nope")
 end
 
 SMODS.Joker:take_ownership("gros_michel", {
