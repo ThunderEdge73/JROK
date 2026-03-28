@@ -236,7 +236,7 @@ self.GAME = saveTable and saveTable.GAME or self:init_game_object()
 '''
 position = "after"
 payload = '''
-G.GAME.jrok_prompt = G.GAME.jrok_prompt or string.lower(JROK.prompt_text) or args.prompt
+G.GAME.jrok_prompt = args.prompt or G.GAME.jrok_prompt or string.lower(JROK.prompt_text)
 '''
 match_indent = true
 
