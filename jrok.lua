@@ -676,6 +676,11 @@ function JROK.generate_joker(shop)
 	if JROK.stolen() then
 		pool[#pool + 1] = "j_burglar"
 	end
+	if JROK.cryptid() then
+		pool[#pool + 1] = "j_chicot"
+		pool[#pool + 1] = "j_obelisk"
+		pool[#pool + 1] = "j_jolly"
+	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
 	end
@@ -797,7 +802,7 @@ function JROK.plagiarized()
 end
 
 function JROK.drunk()
-	return G.GAME.jrok_prompt:find("perkeo")
+	return G.GAME.jrok_prompt:find("perkeo") or G.GAME.jrok_prompt:find("drunk") or G.GAME.jrok_prompt:find("alcohol")
 end
 
 function JROK.stolen()
@@ -805,6 +810,10 @@ function JROK.stolen()
 		or G.GAME.jrok_prompt:find("stole")
 		or G.GAME.jrok_prompt:find("copy")
 		or G.GAME.jrok_prompt:find("plagiar")
+end
+
+function JROK.cryptid()
+	return G.GAME.jrok_prompt:find("cryptid") or G.GAME.jrok_prompt:find("unbalanced")
 end
 
 SMODS.Joker:take_ownership("gros_michel", {
