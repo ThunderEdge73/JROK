@@ -730,7 +730,6 @@ function JROK.generate_joker(shop)
 	end
 	if JROK.lucky() then
 		pool[#pool + 1] = "j_bloodstone"
-		pool[#pool + 1] = "j_space"
 		pool[#pool + 1] = "j_hallucination"
 		pool[#pool + 1] = "j_business"
 		pool[#pool + 1] = "j_8_ball"
@@ -753,6 +752,12 @@ function JROK.generate_joker(shop)
 	if JROK.summarize() then
 		pool[#pool + 1] = "j_diet_cola"
 		pool[#pool + 1] = "j_throwback"
+	end
+	if JROK.green() then
+		pool[#pool + 1] = "j_green_joker"
+	end
+	if JROK.space() then
+		pool[#pool + 1] = "j_space"
 	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
@@ -846,7 +851,9 @@ end
 
 function JROK.generate_planet(shop)
 	local pool = {}
-	-- TODO
+	if JROK.space() then
+		pool[#pool + 1] = "c_earth"
+	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
 	end
@@ -856,6 +863,9 @@ function JROK.generate_spectral(shop)
 	local pool = {}
 	if JROK.legendary() and not shop then
 		pool[#pool + 1] = "c_soul"
+	end
+	if JROK.space() and not shop then
+		pool[#pool + 1] = "c_black_hole"
 	end
 	if next(pool) then
 		return pseudorandom_element(pool, "jrok_prompt")
@@ -875,6 +885,13 @@ function JROK.generate_blind(seed)
 	end
 	if JROK.stolen() then
 		pool[#pool + 1] = "bl_mouth"
+	end
+	if JROK.green() then
+		if G.GAME.round_resets.ante % G.GAME.win_ante == 0 and G.GAME.round_resets.ante >= 2 then
+			pool[#pool + 1] = "bl_final_leaf"
+		else
+			pool[#pool + 1] = "bl_water"
+		end
 	end
 	if next(pool) then
 		return pseudorandom_element(pool, seed or "jrok_prompt")
@@ -973,6 +990,18 @@ function JROK.glitched()
 	return G.GAME.jrok_prompt:find("bug") or G.GAME.jrok_prompt:find("glitch") or G.GAME.jrok_prompt:find("exploit")
 end
 
+function JROK.green()
+	return G.GAME.jrok_prompt:find("green") or G.GAME.jrok_prompt:find("environment")
+end
+
+function JROK.needle()
+	return G.GAME.jrok_prompt:find("needle")
+end
+
+function JROK.space()
+	return G.GAME.jrok_prompt:find("space")
+end
+
 SMODS.Joker:take_ownership("gros_michel", {
 	calculate = function(self, card, context)
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
@@ -1049,6 +1078,73 @@ SMODS.Consumable:take_ownership("soul", {
 				end,
 			}))
 			delay(0.6)
+		end
+	end,
+}, true)
+
+SMODS.Consumable:take_ownership("black_hole", {
+	use = function(self, card, area, copier)
+		if JROK.space() then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.4,
+				func = function()
+					local t = {}
+					for _, c in ipairs(G.jokers.cards) do
+						t[#t + 1] = c
+					end
+					for _, c in ipairs(G.playing_cards) do
+						t[#t + 1] = c
+					end
+					SMODS.destroy_cards(t, true)
+					card:juice_up(0.3, 0.5)
+					return true
+				end,
+			}))
+			delay(0.6)
+		else
+			update_hand_text(
+				{ sound = "button", volume = 0.7, pitch = 0.8, delay = 0.3 },
+				{ handname = localize("k_all_hands"), chips = "...", mult = "...", level = "" }
+			)
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.2,
+				func = function()
+					play_sound("tarot1")
+					card:juice_up(0.8, 0.5)
+					G.TAROT_INTERRUPT_PULSE = true
+					return true
+				end,
+			}))
+			update_hand_text({ delay = 0 }, { mult = "+", StatusText = true })
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.9,
+				func = function()
+					play_sound("tarot1")
+					card:juice_up(0.8, 0.5)
+					return true
+				end,
+			}))
+			update_hand_text({ delay = 0 }, { chips = "+", StatusText = true })
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.9,
+				func = function()
+					play_sound("tarot1")
+					card:juice_up(0.8, 0.5)
+					G.TAROT_INTERRUPT_PULSE = nil
+					return true
+				end,
+			}))
+			update_hand_text({ sound = "button", volume = 0.7, pitch = 0.9, delay = 0 }, { level = "+1" })
+			delay(1.3)
+			SMODS.upgrade_poker_hands({ instant = true })
+			update_hand_text(
+				{ sound = "button", volume = 0.7, pitch = 1.1, delay = 0 },
+				{ mult = 0, chips = 0, handname = "", level = "" }
+			)
 		end
 	end,
 }, true)
@@ -1241,6 +1337,21 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 					for _, c in ipairs(G.playing_cards) do
 						assert(SMODS.change_base(c, "Spades", "10"))
 					end
+					return true
+				end,
+			}))
+		end
+		if JROK.needle() then
+			G.GAME.round_resets.hands = 1
+			G.GAME.round_resets.discards = 6
+			G.GAME.modifiers.discard_cost = 1
+			G.GAME.banned_keys = { "j_burglar", "v_nacho_tong", "v_grabber" }
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					SMODS.add_card({
+						key = "j_credit_card",
+						no_edition = true,
+					})
 					return true
 				end,
 			}))
