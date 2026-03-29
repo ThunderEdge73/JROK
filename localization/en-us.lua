@@ -651,6 +651,20 @@ return {
 					"when scored",
 				},
 			},
+			j_jrok_pingas = {
+				name = "Snoo{C:attention}ping as{} usual?",
+				text = {
+					"{C:red}+#1#{} Mult for each {C:attention}Played{} cards",
+					"{C:attention}He{} might see {C:red}you{} snooping around.",
+				},
+			},
+			j_jrok_kendih = {
+				name = ". . .{X:attention,C:white,s:2,E:2}M-{}",
+				text = {
+					"{C:green}#1#{} in {C:green}#2#{} chance for {C:attention}Kendih{}{f:tngt_emoji}🥀{}",
+					"to scream {X:attention,C:white,s:2,E:2}MUSTARD{}",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
