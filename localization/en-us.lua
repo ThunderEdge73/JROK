@@ -623,6 +623,14 @@ return {
 					"rightmost {C:attention}Joker",
 				},
 			},
+			j_jrok_pissandshittium = {
+				name = "Pissandshittium",
+				text = {
+					"Tells the URL where to download",
+					"{B:1,C:white}Pissandshittium{}",
+					"{V:1}+#1#{} Mult",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
@@ -683,6 +691,7 @@ return {
 			ph_score_jrok_gallons = "Gallons Of Water Used",
 			k_jrok_steel = "Steel!",
 			jrok_rank = "certain rank",
+			k_jrok_pissandshittium = "https://pissandshittium.org/",
 		},
 		v_dictionary = {
 			jrok_punch_card_more = "#1# more required...",
