@@ -1,8 +1,8 @@
 # List of all available prompts:
 
-> 📝 Note that each bullet point corresponds to one prompt effect. Any prompt that contains one or more of a bullet point's listed strings as a substring will trigger the prompt's effect.
+> 📝 Note: Each bullet point corresponds to one prompt effect. Any prompt that contains one or more of a bullet point's listed strings as a substring will trigger the prompt's effect.
 
-> ⚠️ Prompts are case insensitive - capitalization has no effect.
+> ⚠️ Warning: Prompts are case insensitive - capitalization has no effect.
 
 * `banana`, `gros`, `cavendish`, `potassium`
 * `cloud`, `9`
