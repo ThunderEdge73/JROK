@@ -954,7 +954,10 @@ function JROK.photochad()
 end
 
 function JROK.naneinf()
-	return G.GAME.jrok_prompt:find("baron") or G.GAME.jrok_prompt:find("mime") or G.GAME.jrok_prompt:find("infin")
+	return G.GAME.jrok_prompt:find("baron")
+		or G.GAME.jrok_prompt:find("mime")
+		or G.GAME.jrok_prompt:find("infinite")
+		or G.GAME.jrok_prompt:find("infinity")
 end
 
 function JROK.lucky()
@@ -983,7 +986,7 @@ function JROK.stolen()
 	return G.GAME.jrok_prompt:find("steal")
 		or G.GAME.jrok_prompt:find("stole")
 		or G.GAME.jrok_prompt:find("copy")
-		or G.GAME.jrok_prompt:find("plagiar")
+		or G.GAME.jrok_prompt:find("plagiarize")
 end
 
 function JROK.cryptid()
@@ -991,7 +994,11 @@ function JROK.cryptid()
 end
 
 function JROK.summarize()
-	return G.GAME.jrok_prompt:find("summar") or G.GAME.jrok_prompt:find("quick") or G.GAME.jrok_prompt:find("speed")
+	return G.GAME.jrok_prompt:find("summarize")
+		or G.GAME.jrok_prompt:find("summary")
+		or G.GAME.jrok_prompt:find("quick")
+		or G.GAME.jrok_prompt:find("speed")
+		or G.GAME.jrok_prompt:find("brief")
 end
 
 function JROK.nope()

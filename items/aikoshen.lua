@@ -6,7 +6,7 @@ SMODS.Joker({
 		y = 7,
 	},
 	rarity = 1,
-    stolen_from = "Aikoyori's Shenanigans",
+	stolen_from = "Aikoyori's Shenanigans",
 	cost = 2,
 	config = {
 		extras = {
@@ -18,11 +18,14 @@ SMODS.Joker({
 		return {
 			vars = {
 				card.ability.extras.mult,
-                colours = {
-                    HEX("68211d")
-                }
+				colours = {
+					HEX("68211d"),
+				},
 			},
 		}
+	end,
+	in_pool = function(self, args)
+		return false
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
