@@ -266,7 +266,7 @@ function G.FUNCS.jrok_menu_prompt(e)
 								nodes = {
 									{
 										n = G.UIT.C,
-										config = { align = "cm", minh = 4 },
+										config = { align = "cm", minh = 4, id = "error_entry" },
 										nodes = {
 											{
 												n = G.UIT.R,
@@ -447,6 +447,7 @@ function G.FUNCS.process_jrok_prompt(e)
 		or JROK.menu_prompt:find("title")
 		or JROK.menu_prompt:find("quit")
 		or JROK.menu_prompt:find("exit")
+		or JROK.menu_prompt:find("menu")
 	then
 		G.FUNCS.go_to_menu(e)
 	elseif JROK.menu_prompt:find("collection") then
@@ -455,6 +456,22 @@ function G.FUNCS.process_jrok_prompt(e)
 		G.FUNCS.settings(e)
 	elseif JROK.menu_prompt:find("score") then
 		G.FUNCS.high_scores(e)
+	elseif not G.OVERLAY_MENU:get_UIE_by_ID("errored") then
+		local element = G.OVERLAY_MENU:get_UIE_by_ID("error_entry")
+		G.OVERLAY_MENU:add_child({
+			n = G.UIT.R,
+			config = { align = "cm", padding = 0.2, id = "errored" },
+			nodes = {
+				{
+					n = G.UIT.T,
+					config = {
+						text = localize("k_jrok_error"),
+						scale = 0.4,
+						colour = G.C.UI.TEXT_LIGHT,
+					},
+				},
+			},
+		}, element)
 	end
 	JROK.from_jrok = nil
 end

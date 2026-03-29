@@ -664,6 +664,7 @@ return {
 			k_jrok_submit = "Submit",
 			k_jrok_arrow = ">",
 			k_jrok = "JROK",
+			k_jrok_error = "Sorry, I didn't quite get that.",
 			k_jrok_powered = "(Powered",
 			k_by_jrok = "by JROK)",
 			k_felled_ex = "Felled!",
