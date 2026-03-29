@@ -631,6 +631,17 @@ return {
 					"{V:1}+#1#{} Mult",
 				},
 			},
+			j_jrok_ash_joker = {
+				name = "Ash Joker",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"{C:green}#2# in #3#{} chance",
+					"of disintegrating",
+					"at the end of the round",
+					"but gains {C:chips}+#4#{} Chips",
+					"if it survives",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
