@@ -506,6 +506,13 @@ SMODS.current_mod.optional_features = {
 
 SMODS.current_mod.calculate = function(self, context)
 	if context.create_shop_card then
+		if JROK.glitched() then
+			return {
+				shop_create_flags = {
+					set = pseudorandom("glitch", 1, 2) == 1 and "Planet" or "Spectral",
+				},
+			}
+		end
 		if context.set == "Joker" then
 			local item = JROK.generate_joker(true)
 			local edition = nil
@@ -962,6 +969,10 @@ function JROK.nope()
 	return G.GAME.jrok_prompt:find("nope")
 end
 
+function JROK.glitched()
+	return G.GAME.jrok_prompt:find("bug") or G.GAME.jrok_prompt:find("glitch") or G.GAME.jrok_prompt:find("exploit")
+end
+
 SMODS.Joker:take_ownership("gros_michel", {
 	calculate = function(self, card, context)
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
@@ -1220,6 +1231,16 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 						stickers = { "eternal" },
 						force_stickers = true,
 					})
+					return true
+				end,
+			}))
+		end
+		if JROK.glitched() then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					for _, c in ipairs(G.playing_cards) do
+						assert(SMODS.change_base(c, "Spades", "10"))
+					end
 					return true
 				end,
 			}))
