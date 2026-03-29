@@ -642,6 +642,15 @@ return {
 					"if it survives",
 				},
 			},
+			j_jrok_hitomania = {
+				name = "HITO Mania",
+				text = {
+					"Played {C:attention}face{} cards",
+					"give {C:mult}#1#{} to {C:mult}#2#{} Mult",
+					"or {C:chips}#3#{} to {C:chips}#4#{} Chips",
+					"when scored",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
