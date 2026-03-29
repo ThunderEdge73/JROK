@@ -942,14 +942,9 @@ end
 
 function JROK.lucky()
 	for _, str in ipairs({
-		"space",
-		"glass",
 		"fortune",
 		"luck",
 		"oops",
-		"park",
-		"business",
-		"ball",
 		"chance",
 	}) do
 		if G.GAME.jrok_prompt:find(str) then
