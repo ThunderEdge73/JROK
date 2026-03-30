@@ -665,6 +665,23 @@ return {
 					"to scream {X:attention,C:white,s:2,E:2}MUSTARD{}",
 				},
 			},
+			j_jrok_stereom = {
+				name = "Stereo Madness",
+				text = {
+					"Scored cards give",
+					"{C:mult}+#1#{} Mult",
+				},
+			},
+			j_jrok_dryout = {
+				name = "Dry Out",
+				text = {
+					"Gains {C:mult}+#1#{} Mult when",
+					"{C:attention}Blind{} is selected",
+					"{C:red}Resets{} if a",
+					"card is sold",
+					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
