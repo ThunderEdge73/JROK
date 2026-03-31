@@ -70,7 +70,7 @@ SMODS.Joker({
 			and not context.end_of_round
 			and context.other_card:get_id() == 14
 			and SMODS.pseudorandom_probability(card, "ghostinabucket", 1, card.ability.extra.odds)
-			and JROK.count_consumables() < G.consumeables.config.card_limit
+			and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit
 		then
 			G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
 			local juice_card = context.other_card
