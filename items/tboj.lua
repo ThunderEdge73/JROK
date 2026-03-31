@@ -37,7 +37,7 @@ SMODS.Joker({
 			--print("not in game")
 			return { vars = { localize("jrok_unknown") } }
 		end
-		if not table.contains(G.jokers.cards, card) then
+		if not next(SMODS.find_card("j_jrok_dream_catcher")) then
 			--print("not owned")
 			return { vars = { localize("jrok_acquire_to_reveal") } }
 		end
