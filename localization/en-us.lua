@@ -1,5 +1,16 @@
 return {
 	descriptions = {
+		Back = {
+			b_jrok_ai = {
+				name = "AI Deck",
+				text = {
+					"Channels the power of",
+					"{C:attention}generative AI{} to assist",
+					"you with the decisions",
+					"you make within the run.",
+				}
+			}
+		},
 		Edition = {
 			e_jrok_hallucinated = {
 				name = "Hallucinated",

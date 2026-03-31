@@ -574,14 +574,16 @@ SMODS.current_mod.calculate = function(self, context)
 		end
 	end
 	if context.setting_blind and JROK.naneinf() and context.blind.key == "bl_final_vessel" then
-		G.E_MANAGER:add_event(Event({
-			func = function()
-				G.GAME.blind.chips = 1e210 * 1e210
-				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
-				SMODS.juice_up_blind()
-				return true
-			end,
-		}))
+		if G.GAME.selected_back.effect.center.key ~= "b_jrok_ai" then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					G.GAME.blind.chips = 1e210 * 1e210
+					G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+					SMODS.juice_up_blind()
+					return true
+				end,
+			}))
+		end
 	end
 	if context.money_altered and context.amount < 0 then
 		G.GAME.round_scores.jrok_gallons.amt = G.GAME.round_scores.jrok_gallons.amt
@@ -925,7 +927,23 @@ function get_new_boss()
 	return ret
 end
 
+SMODS.Atlas({
+	key = "ai_deck",
+	path = "ai_deck.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Back({
+	key = "ai",
+	atlas = "ai_deck",
+	pos = { x = 0, y = 0 },
+})
+
 function JROK.bananas()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("banana")
 		or G.GAME.jrok_prompt:find("gros")
 		or G.GAME.jrok_prompt:find("cavendish")
@@ -933,20 +951,32 @@ function JROK.bananas()
 end
 
 function JROK.cloud_9()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("cloud") or G.GAME.jrok_prompt:find("9")
 end
 
 function JROK.legendary()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("legendary") or G.GAME.jrok_prompt:find("soul")
 end
 
 function JROK.yuri()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("blueprint")
 		or G.GAME.jrok_prompt:find("brainstorm")
 		or G.GAME.jrok_prompt:find("yuri")
 end
 
 function JROK.photochad()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("photo")
 		or G.GAME.jrok_prompt:find("chad")
 		or G.GAME.jrok_prompt:find("yaoi")
@@ -954,6 +984,9 @@ function JROK.photochad()
 end
 
 function JROK.naneinf()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("baron")
 		or G.GAME.jrok_prompt:find("mime")
 		or G.GAME.jrok_prompt:find("infinite")
@@ -961,6 +994,9 @@ function JROK.naneinf()
 end
 
 function JROK.lucky()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	for _, str in ipairs({
 		"fortune",
 		"luck",
@@ -975,14 +1011,23 @@ function JROK.lucky()
 end
 
 function JROK.plagiarized()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("vanilla") or G.GAME.jrok_prompt:find("mod") or G.GAME.jrok_prompt:find("content")
 end
 
 function JROK.drunk()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("perkeo") or G.GAME.jrok_prompt:find("drunk") or G.GAME.jrok_prompt:find("alcohol")
 end
 
 function JROK.stolen()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("steal")
 		or G.GAME.jrok_prompt:find("stole")
 		or G.GAME.jrok_prompt:find("copy")
@@ -990,10 +1035,16 @@ function JROK.stolen()
 end
 
 function JROK.cryptid()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("cryptid") or G.GAME.jrok_prompt:find("unbalanced")
 end
 
 function JROK.summarize()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("summarize")
 		or G.GAME.jrok_prompt:find("summary")
 		or G.GAME.jrok_prompt:find("quick")
@@ -1002,22 +1053,37 @@ function JROK.summarize()
 end
 
 function JROK.nope()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("nope")
 end
 
 function JROK.glitched()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("bug") or G.GAME.jrok_prompt:find("glitch") or G.GAME.jrok_prompt:find("exploit")
 end
 
 function JROK.green()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("green") or G.GAME.jrok_prompt:find("environment")
 end
 
 function JROK.needle()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("needle")
 end
 
 function JROK.space()
+	if G.GAME.selected_back.effect.center.key == "b_jrok_ai" then
+		return true
+	end
 	return G.GAME.jrok_prompt:find("space")
 end
 
