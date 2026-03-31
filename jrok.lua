@@ -589,29 +589,26 @@ SMODS.current_mod.calculate = function(self, context)
 		G.GAME.round_scores.jrok_gallons.amt = G.GAME.round_scores.jrok_gallons.amt
 			+ math.random(-context.amount, -context.amount * 3)
 	end
-	if context.post_trigger then
-		if JROK.nope() and pseudorandom("nope", 1, 6) == 1 then
-			local card = context.other_card
-			G.E_MANAGER:add_event(Event({
-				func = function()
-					SMODS.calculate_effect({
-						message = localize("k_nope_ex"),
-						colour = G.C.SECONDARY_SET.Tarot,
-						func = function()
-							G.E_MANAGER:add_event(Event({
-								func = function()
-									if not card.ability.debuff_sources or not card.ability.debuff_sources["nope"] then
-										SMODS.debuff_card(card, "jrok_noped", "nope")
-										card:juice_up(0.1, 0.1)
-									end
-									return true
-								end,
-							}))
-						end,
-					}, card)
-					return true
-				end,
-			}))
+	if context.end_of_round then
+		for _, j in ipairs(G.jokers.cards) do
+			if JROK.nope() and pseudorandom("nope", 1, 6) == 1 then
+				local card = j
+				SMODS.calculate_effect({
+					message = localize("k_nope_ex"),
+					colour = G.C.SECONDARY_SET.Tarot,
+					func = function()
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								if not card.debuff then
+									SMODS.debuff_card(card, "jrok_noped", "nope")
+									card:juice_up(0.1, 0.1)
+								end
+								return true
+							end,
+						}))
+					end,
+				}, card)
+			end
 		end
 	end
 	if context.after then
@@ -626,7 +623,7 @@ SMODS.current_mod.calculate = function(self, context)
 						func = function()
 							G.E_MANAGER:add_event(Event({
 								func = function()
-									if not card.ability.debuff_sources or not card.ability.debuff_sources["nope"] then
+									if not card.debuff then
 										SMODS.debuff_card(card, "jrok_noped", "nope")
 										card:juice_up(0.1, 0.1)
 									end
@@ -638,7 +635,7 @@ SMODS.current_mod.calculate = function(self, context)
 				end
 			end
 			if noped then
-				delay(3.0)
+				delay(2.5)
 			end
 		end
 	end
