@@ -44,10 +44,10 @@ float snoise(vec2 v){
 
 vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords )
 {
-    vec2 offset = progress * vec2(cos(time), sin(time)) / 100.0;
+    vec2 offset = progress * vec2(cos(time), sin(time)) / 50.0;
     vec4 og_tex = Texel(texture, texture_coords + offset);
     
-    vec2 final_coords = rotatePoint(texture_coords, snoise(texture_coords * 6.0 + time / 4.0) * progress / 10.0 , vec2(0.5));
+    vec2 final_coords = rotatePoint(texture_coords, snoise(texture_coords * 6.0 + time / 4.0) * progress / 15.0 , vec2(0.5));
 
     //add coordinate-modifying effects here
     vec4 tex = Texel(texture, final_coords);
