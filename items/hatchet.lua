@@ -33,7 +33,7 @@ SMODS.Joker({
 				xmult = card.ability.extra.xmult,
 			}
 		end
-		if context.destroy_card and G.GAME.current_round.hands_played == 0 then
+		if context.destroy_card and G.GAME.current_round.hands_played == 0 and SMODS.in_scoring(context.destroy_card, context.scoring_hand) then
 			return {
 				remove = true,
 			}
