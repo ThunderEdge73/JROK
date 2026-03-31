@@ -1723,7 +1723,7 @@ SMODS.ScreenShader({
 	path = "drunk.fs",
 	send_vars = function(self)
 		return {
-			progress = math.pow((G.GAME.jrok_drunk or 0) / 10, 2),
+			progress = math.pow((G.GAME.jrok_drunk or 0) / 10, 1.5),
 			time = G.TIMERS.REAL,
 		}
 	end,
