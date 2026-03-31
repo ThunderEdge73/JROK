@@ -432,13 +432,13 @@ function G.FUNCS.process_jrok_prompt(e)
 	JROK.from_jrok = true
 	if JROK.menu_prompt:find("custom") or JROK.menu_prompt:find("skin") or JROK.menu_prompt:find("collab") then
 		G.FUNCS.customize_deck(e)
-	elseif JROK.menu_prompt:find("deck") or JROK.menu_prompt:find("card") then
+	elseif JROK.menu_prompt:find("deck") or JROK.menu_prompt:find("card") or JROK.menu_prompt:find("view") then
 		G.FUNCS.deck_info(e)
 	elseif JROK.menu_prompt:find("restart") or JROK.menu_prompt:find("reset") then
 		G.FUNCS.setup_run(e)
 	elseif JROK.menu_prompt:find("seed") and G.GAME.seeded then
 		G.FUNCS.copy_seed(e)
-	elseif JROK.menu_prompt:find("run") or JROK.menu_prompt:find("planet") or JROK.menu_prompt:find("level") then
+	elseif JROK.menu_prompt:find("run") or JROK.menu_prompt:find("planet") or JROK.menu_prompt:find("level") or JROK.menu_prompt:find("hand") then
 		G.FUNCS.run_info(e)
 	elseif JROK.menu_prompt:find("mod") then
 		G.FUNCS.mods_button(e)
@@ -454,8 +454,6 @@ function G.FUNCS.process_jrok_prompt(e)
 		G.FUNCS.your_collection(e)
 	elseif JROK.menu_prompt:find("setting") or JROK.menu_prompt:find("option") then
 		G.FUNCS.settings(e)
-	elseif JROK.menu_prompt:find("score") then
-		G.FUNCS.high_scores(e)
 	elseif not G.OVERLAY_MENU:get_UIE_by_ID("errored") then
 		local element = G.OVERLAY_MENU:get_UIE_by_ID("error_entry")
 		G.OVERLAY_MENU:add_child({
