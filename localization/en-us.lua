@@ -682,6 +682,22 @@ return {
 					"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult){}",
 				},
 			},
+			j_jrok_jimbot = {
+				name = "Jimbot",
+				text = {
+					"If played hand contains",
+					"only one card,",
+					"{C:attention}enhance{} it into a",
+					"{C:attention}Steel{} or {C:attention}Gold{} card",
+				},
+			},
+			j_jrok_hhgregg = {
+				name = "hhgregg",
+				text = {
+					"All cards in the shop",
+					"are {C:attention}discounted{} by {C:money}$#1#",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
