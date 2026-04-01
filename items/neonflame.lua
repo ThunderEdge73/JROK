@@ -7,7 +7,7 @@ SMODS.Joker({
         return false
     end,
 	atlas = "stolen",
-	pos = { x = 3, y = 4 },
+	pos = { x = 6, y = 8 },
 	pools = { minecraft = true },
 
 	config = { extra = { chance = 4, chip = 5, mult = 1 } },
