@@ -9,8 +9,9 @@
     "main_file": "jrok.lua",
     "priority": 0,
     "badge_colour": "374244",
-    "version": "1.0.0",
+    "version": "1.2.1",
     "dependencies": [
         "Steamodded (>=1.0.0~BETA-1503a)"
-    ]
+    ],
+    "allow_redistribution": true
 }
