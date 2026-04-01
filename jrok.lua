@@ -440,6 +440,8 @@ function G.FUNCS.process_jrok_prompt(e)
 		G.FUNCS.copy_seed(e)
 	elseif JROK.menu_prompt:find("run") or JROK.menu_prompt:find("planet") or JROK.menu_prompt:find("level") or JROK.menu_prompt:find("hand") then
 		G.FUNCS.run_info(e)
+	elseif JROK.menu_prompt:find("score") or JROK.menu_prompt:find("high") then
+		G.FUNCS.high_scores(e)
 	elseif JROK.menu_prompt:find("mod") then
 		G.FUNCS.mods_button(e)
 	elseif

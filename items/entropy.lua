@@ -15,6 +15,10 @@ function JROK.is_number(x)
 	return type(x) == "number" or (type(x) == "table" and is_number(x)) or (is_big and is_big(x))
 end
 
+to_big = to_big or function(x)
+	return x
+end
+
 SMODS.Joker({
 	key = "lambda_calculus",
 	rarity = 2,
