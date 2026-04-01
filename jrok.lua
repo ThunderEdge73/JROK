@@ -6,6 +6,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "new_al",
+	path = "new_al.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
 	key = "modicon",
 	path = "jrok.png",
 	px = 34,
@@ -14,7 +21,7 @@ SMODS.Atlas({
 
 for k, c in pairs(G.P_CENTERS) do
 	if c.set == "Joker" and not c.original_mod then
-		SMODS.Joker:take_ownership(string.sub(k, 3), { atlas = "al_jokers" }, true)
+		SMODS.Joker:take_ownership(string.sub(k, 3), { atlas = "new_al" }, true)
 	end
 end
 
