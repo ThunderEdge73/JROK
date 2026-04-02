@@ -742,10 +742,10 @@ return {
 			j_jrok_button = {
 				name = "Button",
 				text = {
-					"When {C:attention}Clicked{} or {C:attention}Space is",
-					"{C:attention}Pressed{}, gain {X:mult,C:white}X#4#{} Mult and",
-					"has a {C:green}#1# in #2#{} chance that",
-					"this card is destroyed",
+					"When {C:attention}Space{} is {C:attention}Pressed{},",
+					"gains {X:mult,C:white}X#4#{} Mult and",
+					"has a {C:green}#1# in #2#{} chance to",
+					"{C:red}self-destruct",
 					"{C:inactive}(Currently {X:mult,C:white} X#3# {C:inactive} Mult)",
 				},
 			},
