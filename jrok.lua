@@ -445,7 +445,12 @@ function G.FUNCS.process_jrok_prompt(e)
 		G.FUNCS.setup_run(e)
 	elseif JROK.menu_prompt:find("seed") and G.GAME.seeded then
 		G.FUNCS.copy_seed(e)
-	elseif JROK.menu_prompt:find("run") or JROK.menu_prompt:find("planet") or JROK.menu_prompt:find("level") or JROK.menu_prompt:find("hand") then
+	elseif
+		JROK.menu_prompt:find("run")
+		or JROK.menu_prompt:find("planet")
+		or JROK.menu_prompt:find("level")
+		or JROK.menu_prompt:find("hand")
+	then
 		G.FUNCS.run_info(e)
 	elseif JROK.menu_prompt:find("score") or JROK.menu_prompt:find("high") then
 		G.FUNCS.high_scores(e)
@@ -1287,7 +1292,7 @@ SMODS.Shader({
 SMODS.Edition({
 	key = "hallucinated",
 	shader = "hallucinated",
-	config = { extra = { xmult = 0.75 } },
+	config = { xmult = 0.75 },
 	on_apply = function(card)
 		card.edition.jrok_hallucination_seed = {
 			math.random(),
@@ -1296,6 +1301,13 @@ SMODS.Edition({
 	end,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.edition.extra.xmult } }
+	end,
+	calculate = function(self, card, context)
+		if context.post_joker or (context.main_scoring and context.cardarea == G.play) then
+			return {
+				x_mult = card.edition.x_mult,
+			}
+		end
 	end,
 	apply_to_float = true,
 })
