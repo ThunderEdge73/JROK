@@ -733,7 +733,7 @@ function JROK.generate_joker(shop)
 		pool[#pool + 1] = "j_cavendish"
 	end
 	if JROK.cloud_9() then
-		pool[#pool + 1] = "cloud_9"
+		pool[#pool + 1] = "j_cloud_9"
 	end
 	if JROK.yuri() then
 		if shop then
