@@ -534,6 +534,13 @@ SMODS.current_mod.optional_features = {
 }
 
 SMODS.current_mod.calculate = function(self, context)
+	if context.debuff_card then
+		if context.debuff_card.config.center_key == "j_perkeo" and JROK.drunk() then
+			return {
+				prevent_debuff = true
+			}
+		end
+	end
 	if context.create_shop_card then
 		if JROK.glitched() then
 			return {
