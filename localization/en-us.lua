@@ -717,6 +717,38 @@ return {
 					"{s:0.8,C:inactive}(Currently {s:0.8,C:blue}+#3#{s:0.8,C:inactive} chips and {s:0.8,C:red}+#4#{s:0.8,C:inactive} mult)",
 				},
 			},
+			j_jrok_murphy = {
+				name = "Murphy",
+				text = {
+					"Scored {C:attention}9s{} gain",
+					"{C:mult}+#1#{} Mult permanently",
+				},
+			},
+			j_jrok_incognito = {
+				name = "Incognito",
+				text = {
+					{
+						"This Joker gains {X:mult,C:white}X#3#{} Mult when a",
+						"non {C:spades}Spade{} card is destroyed",
+						"{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)",
+					},
+					{
+						"Each non {C:spades}Spade{} card held in hand",
+						"has a {C:green}#1# in #2#{} chance to be destroyed",
+						"{C:spades}Spade{} cards held in hand gives Mult",
+					},
+				},
+			},
+			j_jrok_button = {
+				name = "Button",
+				text = {
+					"When {C:attention}Clicked{} or {C:attention}Space is",
+					"{C:attention}Pressed{}, gain {X:mult,C:white}X#4#{} Mult and",
+					"has a {C:green}#1# in #2#{} chance that",
+					"this card is destroyed",
+					"{C:inactive}(Currently {X:mult,C:white} X#3# {C:inactive} Mult)",
+				},
+			},
 		},
 		Other = {
 			o_jrok_ortalab_dead_ringer = {
