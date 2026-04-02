@@ -1462,6 +1462,7 @@ SMODS.current_mod.reset_game_globals = function(run_start)
 			}))
 		end
 		if JROK.glitched() then
+			G.GAME.banned_keys = { "j_idol", "c_justice" }
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					for _, c in ipairs(G.playing_cards) do
@@ -1737,7 +1738,7 @@ end
 SMODS.Joker:take_ownership("perkeo", {
 	calculate = function(self, card, context)
 		if context.ending_shop and G.consumeables.cards[1] then
-			if JROK.drunk() and pseudorandom("drunk", 1, 2) == 1 then
+			if JROK.drunk() and pseudorandom("drunk", 1, 3) ~= 1 then
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						SMODS.add_card({
@@ -1808,7 +1809,7 @@ SMODS.Consumable({
 	set = "Tarot",
 	atlas = "alcohol",
 	pos = { x = 0, y = 0 },
-	config = { extra = { xmult = 0.8 } },
+	config = { extra = { xmult = 0.9 } },
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
