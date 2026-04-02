@@ -738,6 +738,28 @@ SMODS.Booster:take_ownership_by_kind("Spectral", {
 	end,
 }, true)
 
+SMODS.Booster:take_ownership_by_kind("Celestial", {
+	create_card = function()
+		local item = JROK.generate_planet()
+		if item then
+			return {
+				area = G.pack_cards,
+				skip_materialize = true,
+				soulable = true,
+				key_append = "pl1",
+				key = item,
+			}
+		end
+		return {
+			set = "Planet",
+			area = G.pack_cards,
+			skip_materialize = true,
+			soulable = true,
+			key_append = "pl1",
+		}
+	end,
+}, true)
+
 function JROK.generate_joker(shop)
 	local pool = {}
 	if JROK.bananas() then
