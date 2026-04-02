@@ -596,9 +596,9 @@ SMODS.current_mod.calculate = function(self, context)
 		G.GAME.round_scores.jrok_gallons.amt = G.GAME.round_scores.jrok_gallons.amt
 			+ math.random(-context.amount, -context.amount * 3)
 	end
-	if context.end_of_round then
+	if context.end_of_round and context.main_eval and not context.game_over then
 		for _, j in ipairs(G.jokers.cards) do
-			if JROK.nope() and pseudorandom("nope", 1, 6) == 1 then
+			if JROK.nope() and pseudorandom("nope", 1, 8) == 1 then
 				local card = j
 				SMODS.calculate_effect({
 					message = localize("k_nope_ex"),
@@ -622,7 +622,7 @@ SMODS.current_mod.calculate = function(self, context)
 		if JROK.nope() then
 			local noped = false
 			for _, card in ipairs(context.scoring_hand) do
-				if pseudorandom("nope", 1, 6) == 1 then
+				if pseudorandom("nope", 1, 8) == 1 then
 					noped = true
 					SMODS.calculate_effect({
 						message = localize("k_nope_ex"),
