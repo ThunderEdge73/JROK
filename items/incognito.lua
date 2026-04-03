@@ -113,7 +113,6 @@ SMODS.Joker({ -- Incognito
 					context.other_card.should_destroy = true
 					G.E_MANAGER:add_event(Event({
 						func = function()
-							play_sound("nic_swoon")
 							return true
 						end,
 					}))
